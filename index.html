@@ -3148,27 +3148,37 @@
                 ? `<span>${data.texto.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</span>`
                 : '';
 
-            // Audio
+            // Audio con diseño dinámico para mí (mine) y otros (others)
+            const audioBg = (isMe || isMyAnonMsg) ? 'rgba(255,255,255,0.15)' : 'rgba(16,185,129,0.08)';
+            const audioStroke = (isMe || isMyAnonMsg) ? '#ffffff' : '#10b981';
+            const audioBorder = (isMe || isMyAnonMsg) ? '1px solid rgba(255,255,255,0.25)' : '1px solid rgba(16,185,129,0.15)';
+
             const audioHtml = data.audioUrl
-                ? `<div style="display:flex;align-items:center;gap:8px;background:rgba(16,185,129,0.1);padding:8px 10px;border-radius:12px;margin-top:4px;">
-                    <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#10b981;fill:none;stroke-width:2;flex-shrink:0;"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+                ? `<div style="display:flex;align-items:center;gap:8px;background:${audioBg};padding:8px 10px;border-radius:12px;margin-top:4px;border:${audioBorder};">
+                    <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:${audioStroke};fill:none;stroke-width:2.5;flex-shrink:0;"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
                     <audio src="${data.audioUrl}" controls style="height:28px;flex:1;min-width:0;"></audio>
                    </div>`
                 : '';
 
-            // Documento
+            // Documento con diseño dinámico para mí (mine) y otros (others)
+            const docBg = (isMe || isMyAnonMsg) ? 'rgba(255,255,255,0.18)' : 'rgba(124,58,237,0.08)';
+            const docColor = (isMe || isMyAnonMsg) ? '#ffffff' : '#7c3aed';
+            const docBorder = (isMe || isMyAnonMsg) ? '1px solid rgba(255,255,255,0.28)' : '1px solid rgba(124,58,237,0.15)';
+
             const docHtml = data.docUrl
-                ? `<a href="${data.docUrl}" download="${data.docName || 'Documento'}" target="_blank" style="display:flex;align-items:center;gap:8px;background:rgba(124,58,237,0.08);padding:8px 10px;border-radius:12px;margin-top:4px;text-decoration:none;">
-                    <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#7c3aed;fill:none;stroke-width:2;flex-shrink:0;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                    <span style="font-size:12px;color:#7c3aed;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${data.docName || 'Documento'}</span>
+                ? `<a href="${data.docUrl}" download="${data.docName || 'Documento'}" target="_blank" style="display:flex;align-items:center;gap:8px;background:${docBg};padding:8px 10px;border-radius:12px;margin-top:4px;text-decoration:none;border:${docBorder};">
+                    <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:${docColor};fill:none;stroke-width:2.5;flex-shrink:0;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <span style="font-size:12px;color:${docColor};font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${data.docName || 'Documento'}</span>
                    </a>`
                 : '';
 
             // Botón borrar (solo admins)
             let deleteBtnHtml = '';
             if (currentUser && ['Coordinador', 'Supervisor'].includes(currentUser.rol)) {
-                deleteBtnHtml = `<div onclick="deleteChatMessage('${doc.id}')" style="cursor:pointer; display:flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; background:rgba(239, 68, 68, 0.1); margin-top:4px;" title="Borrar mensaje">
-                    <svg viewBox="0 0 24 24" style="width:12px; height:12px; stroke:#ef4444; fill:none; stroke-width:2; stroke-linecap:round;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                const delIconColor = (isMe || isMyAnonMsg) ? 'rgba(255,255,255,0.8)' : '#ef4444';
+                const delBgColor = (isMe || isMyAnonMsg) ? 'rgba(255,255,255,0.2)' : 'rgba(239, 68, 68, 0.1)';
+                deleteBtnHtml = `<div onclick="deleteChatMessage('${doc.id}')" style="cursor:pointer; display:flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; background:${delBgColor}; margin-top:4px;" title="Borrar mensaje">
+                    <svg viewBox="0 0 24 24" style="width:12px; height:12px; stroke:${delIconColor}; fill:none; stroke-width:2; stroke-linecap:round;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
                 </div>`;
             }
 
@@ -3177,7 +3187,7 @@
                     ${!(isMe || isMyAnonMsg) ? `<div class="chat-avatar" style="background:${color};">${initials(data.nombre)}</div>` : ''}
                     <div class="chat-bubble">
                         <div class="chat-meta">
-                            <strong>${(isMe || isMyAnonMsg) ? 'Tú' : data.nombre}</strong>
+                            <strong style="color: ${(isMe || isMyAnonMsg) ? '#ffffff' : 'inherit'};">${(isMe || isMyAnonMsg) ? 'Tú' : data.nombre}</strong>
                             <span class="chat-role-pill">${data.rol || ''}</span>
                         </div>
                         ${imgHtml}${audioHtml}${docHtml}${textHtml}
