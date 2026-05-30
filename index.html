@@ -889,6 +889,17 @@
             flex-direction: column;
             gap: 4px;
             word-break: break-word;
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        .chat-msg-wrap {
+            max-width: 78%;
+        }
+        @media (max-width: 520px) {
+            .chat-msg-wrap {
+                max-width: 85%;
+            }
         }
 
         .chat-msg-wrap.mine .chat-bubble {
@@ -1643,10 +1654,6 @@
                             style="font-size:12px; border-radius: 12px; height: 40px; display:flex; align-items:center; justify-content:center; gap:6px; width:100%; background:#f8fafc; border: 1px solid #e2e8f0; color: #334155; font-weight: 600; cursor: pointer;">
                             ⛽ ¿Eres Operador? Actualizar KM
                         </button>
-                        <button class="btn btn-ghost" onclick="showChat(true)"
-                            style="font-size:12px; border-radius: 12px; height: 40px; display:flex; align-items:center; justify-content:center; gap:6px; width:100%; background:#eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; font-weight: 600; cursor: pointer;">
-                            💬 Chat de Flota (sin cuenta)
-                        </button>
                     </div>
                 </div>
             </div>
@@ -1677,19 +1684,6 @@
                     style="font-size:12px; color:#64748b; text-align:center; line-height:1.4; margin-bottom:10px; font-family:var(--font); font-weight:500;">
                     Selecciona tu unidad para ingresar el kilometraje.
                 </p>
-
-                <!-- Boton Chat de Flota Anónimo -->
-                <div style="margin-bottom:14px;">
-                    <button class="btn"
-                        style="background:#0066ff; width:100%; display:flex; justify-content:center; align-items:center; gap:8px;"
-                        onclick="showChat(true)">
-                        <svg viewBox="0 0 24 24"
-                            style="width:18px; height:18px; fill:none; stroke:#fff; stroke-width:2;">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                        </svg>
-                        Abrir Chat de Flota
-                    </button>
-                </div>
 
                 <div id="op-unit-list" style="display:flex; flex-direction:column; gap:8px;"></div>
             </div>
@@ -4058,7 +4052,6 @@
             };
             lb.ontouchstart = (e) => {
                 if (e.touches.length === 2) { lbLastDist = 0; lbIsPinching = true; }
-                // Double-tap to zoom/reset
                 if (e.touches.length === 1) {
                     const now = Date.now();
                     if (now - lbLastTap < 300) {
@@ -4070,7 +4063,6 @@
                 }
             };
             lb.ontouchend = () => { lbLastDist = 0; lbIsPinching = false; };
-            // Scroll wheel zoom (desktop)
             lb.onwheel = (e) => {
                 e.preventDefault();
                 lbScale = Math.min(5, Math.max(1, lbScale - e.deltaY * 0.005));
@@ -4084,7 +4076,7 @@
             setTimeout(() => { lb.style.display = 'none'; }, 250);
         }
 
-        // ── Badge de mensajes no leídos ───────────────────────────────
+        // ── Badge de mensajes no leídos ──────────────────────────────────────
         function updateChatBadges(show) {
             const ids = ['chat-badge-home', 'chat-badge-detail', 'chat-badge-register', 'chat-badge-reports'];
             ids.forEach(id => {
@@ -4093,7 +4085,38 @@
             });
         }
 
-        // Escuchar mensajes en segundo plano para mostrar el badge
+        // ── Notificaciones nativas del navegador ────────────────────────────────
+        async function requestPushPermission() {
+            if (!('Notification' in window)) {
+                showToast('Tu navegador no soporta notificaciones');
+                return;
+            }
+            const permission = await Notification.requestPermission();
+            if (permission === 'granted') {
+                document.getElementById('chat-push-banner').style.display = 'none';
+                showToast('✅ Notificaciones activadas');
+                localStorage.setItem('notif_granted', '1');
+            } else {
+                showToast('Permiso denegado. Actívalo en ajustes del navegador.');
+            }
+        }
+
+        function fireNativeNotification(nombre, texto) {
+            if (Notification.permission !== 'granted') return;
+            const chatOpen = document.getElementById('s-chat').classList.contains('active');
+            if (chatOpen) return; // ya está viendo el chat
+            try {
+                new Notification('💬 Chat de Flota — ' + nombre, {
+                    body: texto || 'Nuevo mensaje',
+                    icon: 'flotilla_icon.png',
+                    badge: 'flotilla_icon.png',
+                    tag: 'flotilla-chat',
+                    renotify: true
+                });
+            } catch(e) {}
+        }
+
+        // Escuchar mensajes en segundo plano para mostrar el badge y notificar
         function startChatBadgeListener() {
             if (!currentUser) return;
             db.collection('chats')
@@ -4104,61 +4127,15 @@
                     const latest = snap.docs[0].data();
                     if (!latest.timestamp) return;
                     const latestMs = latest.timestamp.toMillis ? latest.timestamp.toMillis() : 0;
-                    // Si el mensaje más reciente es de otro y es nuevo, mostrar badge
                     if (latest.usuario !== currentUser.usuario && latestMs > chatLastSeenTs) {
-                        // Solo mostrar badge si el chat no está abierto
                         const chatOpen = document.getElementById('s-chat').classList.contains('active');
                         if (!chatOpen) {
                             chatLastSeenTs = latestMs;
                             updateChatBadges(true);
+                            fireNativeNotification(latest.nombre || 'Flota', latest.texto || '🎙️ Mensaje de voz o archivo');
                         }
                     }
                 });
-        }
-
-        // ── Notificaciones Push (FCM) ─────────────────────────────────
-        async function requestPushPermission() {
-            if (!messaging) { showToast('Notificaciones no soportadas en este navegador'); return; }
-            try {
-                const permission = await Notification.requestPermission();
-                if (permission === 'granted') {
-                    document.getElementById('chat-push-banner').style.display = 'none';
-                    // VAPID key pública — debes reemplazarla con la tuya de Firebase Console
-                    // Ve a Firebase Console > Project Settings > Cloud Messaging > Web Push certificates
-                    const VAPID_KEY = 'BEl62iUYgUivxIkv69yViEuiBIa-Ib9-SkvMeAtA3LFgDkBWDTXur-XQ3Rv87OiEuDjuJJSWz3UoVBQrSw_iUUA';
-                    const token = await messaging.getToken({ vapidKey: VAPID_KEY });
-                    if (token) {
-                        console.log('FCM Token:', token);
-                        // Guardar token en Firestore asociado al usuario actual
-                        await db.collection('fcm_tokens').doc(currentUser.usuario).set({
-                            token: token,
-                            usuario: currentUser.usuario,
-                            nombre: currentUser.nombre,
-                            rol: currentUser.rol,
-                            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-                        });
-                        showToast('✅ Notificaciones activadas correctamente');
-                    }
-                } else {
-                    showToast('Permiso de notificaciones denegado');
-                }
-            } catch (e) {
-                console.error('Error FCM:', e);
-                showToast('Error al activar notificaciones');
-            }
-        }
-
-        // Escuchar notificaciones cuando la app está en primer plano
-        if (messaging) {
-            messaging.onMessage(payload => {
-                console.log('FCM foreground message:', payload);
-                const { title, body } = payload.notification || {};
-                showToast(`💬 ${title || 'Nuevo mensaje'}: ${body || ''}`);
-                // Si el chat está abierto, simplemente el snapshot listener ya lo actualizará
-                // Si no está abierto, mostrar el badge
-                const chatOpen = document.getElementById('s-chat').classList.contains('active');
-                if (!chatOpen) updateChatBadges(true);
-            });
         }
 
         // Arrancar listener de badge cuando el usuario inicia sesión
