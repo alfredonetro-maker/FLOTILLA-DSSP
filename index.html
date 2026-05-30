@@ -129,7 +129,7 @@
             padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
             justify-content: space-around;
             align-items: center;
-            box-shadow: 0 -4px 12px rgba(0,0,0,0.02);
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.02);
             flex-shrink: 0;
         }
 
@@ -673,12 +673,14 @@
             margin-top: 12px;
             width: 100%;
         }
+
         @media (max-width: 380px) {
             .report-traffic-lights {
                 grid-template-columns: 1fr;
                 gap: 12px;
             }
         }
+
         .light-col {
             background: var(--bg3);
             border: 1px solid var(--border);
@@ -689,19 +691,24 @@
             gap: 8px;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
+
         .light-col:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         }
+
         .col-red {
             border-top: 3px solid var(--red);
         }
+
         .col-amber {
             border-top: 3px solid var(--amber);
         }
+
         .col-green {
             border-top: 3px solid var(--green);
         }
+
         .light-header {
             font-size: 11px;
             font-weight: 600;
@@ -712,14 +719,25 @@
             border-bottom: 1px solid var(--border);
             text-align: center;
         }
-        .col-red .light-header { color: var(--red); }
-        .col-amber .light-header { color: var(--amber); }
-        .col-green .light-header { color: var(--green); }
+
+        .col-red .light-header {
+            color: var(--red);
+        }
+
+        .col-amber .light-header {
+            color: var(--amber);
+        }
+
+        .col-green .light-header {
+            color: var(--green);
+        }
+
         .light-list {
             display: flex;
             flex-direction: column;
             gap: 6px;
         }
+
         .light-unit-card {
             background: var(--bg2);
             border: 1px solid var(--border);
@@ -731,9 +749,11 @@
             cursor: pointer;
             transition: background 0.15s;
         }
+
         .light-unit-card:hover {
             background: var(--bg3);
         }
+
         .light-unit-card .unit-name {
             font-size: 13px;
             font-weight: 600;
@@ -741,6 +761,7 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .light-unit-card .unit-detail {
             font-size: 11px;
             color: var(--muted);
@@ -748,6 +769,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+
         .light-unit-card .unit-pct {
             font-family: var(--mono);
             font-size: 10px;
@@ -755,14 +777,17 @@
             padding: 2px 6px;
             border-radius: 10px;
         }
+
         .col-red .unit-pct {
             background: rgba(255, 71, 87, 0.12);
             color: var(--red);
         }
+
         .col-amber .unit-pct {
             background: rgba(245, 166, 35, 0.12);
             color: var(--amber);
         }
+
         .col-green .unit-pct {
             background: rgba(46, 204, 138, 0.12);
             color: var(--green);
@@ -849,7 +874,7 @@
             font-weight: 700;
             color: #ffffff;
             flex-shrink: 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
         .chat-bubble {
@@ -858,7 +883,7 @@
             font-size: 13.5px;
             line-height: 1.4;
             position: relative;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
             display: flex;
             flex-direction: column;
             gap: 4px;
@@ -888,7 +913,7 @@
 
         .chat-msg-wrap.mine .chat-meta {
             justify-content: flex-end;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .chat-msg-wrap.others .chat-meta {
@@ -904,7 +929,7 @@
         }
 
         .chat-msg-wrap.mine .chat-time {
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .chat-msg-wrap.others .chat-time {
@@ -923,9 +948,9 @@
         }
 
         .chat-msg-wrap.mine .chat-role-pill {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             color: #ffffff;
-            border-color: rgba(255,255,255,0.3);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         .chat-image {
@@ -952,7 +977,7 @@
             flex-direction: column;
             gap: 8px;
             flex-shrink: 0;
-            box-shadow: 0 -4px 12px rgba(0,0,0,0.02);
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.02);
         }
 
         .chat-input-row {
@@ -1102,7 +1127,7 @@
             max-width: 92%;
             max-height: 80%;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             object-fit: contain;
         }
 
@@ -1113,35 +1138,37 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             color: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 24px;
             cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             transition: background 0.2s;
         }
 
         .chat-lightbox-close:hover {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
         }
 
         /* ── Sidebar ── */
         .sidebar-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(15,23,42,0.5);
+            background: rgba(15, 23, 42, 0.5);
             z-index: 2000;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.25s ease;
         }
+
         .sidebar-overlay.open {
             opacity: 1;
             pointer-events: all;
         }
+
         .sidebar-panel {
             position: absolute;
             top: 0;
@@ -1149,15 +1176,17 @@
             bottom: 0;
             width: 280px;
             background: #ffffff;
-            box-shadow: 4px 0 24px rgba(0,0,0,0.12);
+            box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
             display: flex;
             flex-direction: column;
-            transition: left 0.3s cubic-bezier(0.4,0,0.2,1);
+            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
         }
+
         .sidebar-overlay.open .sidebar-panel {
             left: 0;
         }
+
         .sidebar-header {
             padding: 52px 20px 20px;
             background: linear-gradient(135deg, #0066ff 0%, #0047cc 100%);
@@ -1165,11 +1194,12 @@
             align-items: center;
             gap: 12px;
         }
+
         .sidebar-avatar {
             width: 48px;
             height: 48px;
             border-radius: 14px;
-            background: rgba(255,255,255,0.25);
+            background: rgba(255, 255, 255, 0.25);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1179,6 +1209,7 @@
             font-family: var(--font);
             flex-shrink: 0;
         }
+
         .sidebar-user-info h2 {
             font-size: 16px;
             font-weight: 700;
@@ -1186,16 +1217,19 @@
             margin: 0;
             font-family: var(--font);
         }
+
         .sidebar-user-info span {
             font-size: 11px;
-            color: rgba(255,255,255,0.75);
+            color: rgba(255, 255, 255, 0.75);
             font-family: var(--font);
         }
+
         .sidebar-nav {
             flex: 1;
             padding: 12px 0;
             overflow-y: auto;
         }
+
         .sidebar-nav-item {
             display: flex;
             align-items: center;
@@ -1209,9 +1243,12 @@
             transition: background 0.15s;
             border-radius: 0;
         }
-        .sidebar-nav-item:hover, .sidebar-nav-item:active {
+
+        .sidebar-nav-item:hover,
+        .sidebar-nav-item:active {
             background: #f1f5f9;
         }
+
         .sidebar-nav-item svg {
             width: 20px;
             height: 20px;
@@ -1222,10 +1259,15 @@
             stroke-linejoin: round;
             flex-shrink: 0;
         }
+
         .sidebar-nav-item.danger {
             color: #ef4444;
         }
-        .sidebar-nav-item.danger svg { stroke: #ef4444; }
+
+        .sidebar-nav-item.danger svg {
+            stroke: #ef4444;
+        }
+
         .sidebar-divider {
             height: 1px;
             background: #e2e8f0;
@@ -1239,9 +1281,11 @@
             z-index: 1900;
             pointer-events: none;
         }
+
         .notif-overlay.open {
             pointer-events: all;
         }
+
         .notif-panel {
             position: absolute;
             top: 0;
@@ -1250,15 +1294,17 @@
             max-width: 320px;
             bottom: 0;
             background: #ffffff;
-            box-shadow: -4px 0 24px rgba(0,0,0,0.10);
+            box-shadow: -4px 0 24px rgba(0, 0, 0, 0.10);
             display: flex;
             flex-direction: column;
-            transition: right 0.3s cubic-bezier(0.4,0,0.2,1);
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
         }
+
         .notif-overlay.open .notif-panel {
             right: 0;
         }
+
         .notif-panel-header {
             padding: 52px 20px 16px;
             border-bottom: 1px solid #e2e8f0;
@@ -1266,12 +1312,14 @@
             align-items: center;
             justify-content: space-between;
         }
+
         .notif-panel-title {
             font-size: 16px;
             font-weight: 700;
             color: #0f172a;
             font-family: var(--font);
         }
+
         .notif-close-btn {
             width: 32px;
             height: 32px;
@@ -1285,6 +1333,7 @@
             color: #64748b;
             border: 1px solid #e2e8f0;
         }
+
         .notif-list {
             flex: 1;
             overflow-y: auto;
@@ -1293,6 +1342,7 @@
             flex-direction: column;
             gap: 10px;
         }
+
         .notif-item {
             display: flex;
             align-items: flex-start;
@@ -1302,16 +1352,18 @@
             border-radius: 12px;
             padding: 12px;
         }
+
         .notif-icon {
             width: 34px;
             height: 34px;
             border-radius: 50%;
-            background: rgba(239,68,68,0.1);
+            background: rgba(239, 68, 68, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
         }
+
         .notif-text strong {
             font-size: 13px;
             font-weight: 700;
@@ -1319,6 +1371,7 @@
             font-family: var(--font);
             display: block;
         }
+
         .notif-text span {
             font-size: 11px;
             color: #64748b;
@@ -1332,9 +1385,11 @@
             z-index: 1800;
             pointer-events: none;
         }
+
         .user-dropdown-overlay.open {
             pointer-events: all;
         }
+
         .user-dropdown-menu {
             position: absolute;
             top: 100px;
@@ -1342,19 +1397,21 @@
             background: #ffffff;
             border: 1px solid #e2e8f0;
             border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
             min-width: 200px;
             overflow: hidden;
             transform: translateY(-8px) scale(0.97);
             opacity: 0;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             pointer-events: none;
         }
+
         .user-dropdown-overlay.open .user-dropdown-menu {
             transform: translateY(0) scale(1);
             opacity: 1;
             pointer-events: all;
         }
+
         .user-dropdown-item {
             display: flex;
             align-items: center;
@@ -1367,15 +1424,38 @@
             color: #0f172a;
             transition: background 0.15s;
         }
-        .user-dropdown-item:hover { background: #f8fafc; }
-        .user-dropdown-item svg { width:18px; height:18px; fill:none; stroke:#64748b; stroke-width:2; stroke-linecap:round; }
-        .user-dropdown-item.danger { color: #ef4444; }
-        .user-dropdown-item.danger svg { stroke: #ef4444; }
-        .user-dropdown-divider { height:1px; background:#e2e8f0; }
+
+        .user-dropdown-item:hover {
+            background: #f8fafc;
+        }
+
+        .user-dropdown-item svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: #64748b;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .user-dropdown-item.danger {
+            color: #ef4444;
+        }
+
+        .user-dropdown-item.danger svg {
+            stroke: #ef4444;
+        }
+
+        .user-dropdown-divider {
+            height: 1px;
+            background: #e2e8f0;
+        }
+
         .user-dropdown-info {
             padding: 14px 16px 10px;
             border-bottom: 1px solid #e2e8f0;
         }
+
         .user-dropdown-info strong {
             font-size: 13px;
             font-weight: 700;
@@ -1383,14 +1463,23 @@
             font-family: var(--font);
             display: block;
         }
+
         .user-dropdown-info span {
             font-size: 11px;
             color: #64748b;
             font-family: var(--font);
         }
+
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
         }
     </style>
     <!-- Firebase SDKs (Compat v10) -->
@@ -1409,66 +1498,105 @@
 
         <!-- LOGIN -->
         <div id="s-login" class="screen active">
-            <div class="login-card" style="width: 100%; max-width: 380px; background: #ffffff; border-radius: 28px; padding: 32px 24px; box-shadow: 0 12px 30px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; display: flex; flex-direction: column; align-items: center; margin: auto 0;">
-                
-                <h1 style="font-size: 24px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; margin-bottom: 4px; font-family: var(--font);">FlotaControl</h1>
-                <p style="font-size: 13px; color: #64748b; margin-bottom: 20px; font-weight: 500; font-family: var(--font);">Mantenimiento vehicular</p>
-                
+            <div class="login-card"
+                style="width: 100%; max-width: 380px; background: #ffffff; border-radius: 28px; padding: 32px 24px; box-shadow: 0 12px 30px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; display: flex; flex-direction: column; align-items: center; margin: auto 0;">
+
+                <h1
+                    style="font-size: 24px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; margin-bottom: 4px; font-family: var(--font);">
+                    FlotaControl</h1>
+                <p
+                    style="font-size: 13px; color: #64748b; margin-bottom: 20px; font-weight: 500; font-family: var(--font);">
+                    Mantenimiento vehicular</p>
+
                 <!-- Toyota Hilux Pickup truck image -->
-                <img src="toyota_hilux_white.png" alt="Toyota Hilux" style="width: 100%; max-width: 210px; height: auto; margin-bottom: 24px; object-fit: contain;">
-                
+                <img src="toyota_hilux_white.png" alt="Toyota Hilux"
+                    style="width: 100%; max-width: 210px; height: auto; margin-bottom: 24px; object-fit: contain;">
+
                 <div class="login-form" style="width: 100%; display: flex; flex-direction: column; gap: 14px;">
-                    
+
                     <!-- User Field -->
                     <div class="form-group" style="gap: 6px;">
-                        <label style="font-size: 11px; font-weight: 700; letter-spacing: 0.5px; color: #475569; display: flex; align-items: center; gap: 6px; font-family: var(--font);">
-                            <svg viewBox="0 0 24 24" style="width: 12px; height: 12px; fill: none; stroke: #0066ff; stroke-width: 2.5;"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <label
+                            style="font-size: 11px; font-weight: 700; letter-spacing: 0.5px; color: #475569; display: flex; align-items: center; gap: 6px; font-family: var(--font);">
+                            <svg viewBox="0 0 24 24"
+                                style="width: 12px; height: 12px; fill: none; stroke: #0066ff; stroke-width: 2.5;">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg>
                             USUARIO
                         </label>
                         <div style="position: relative; width: 100%;">
-                            <svg viewBox="0 0 24 24" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; fill: none; stroke: #94a3b8; stroke-width: 2.2;"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                            <input type="text" id="l-user" placeholder="tu usuario" autocomplete="username" autocapitalize="none" style="padding-left: 42px; border-radius: 12px; height: 46px; border: 1px solid #cbd5e1; background: #ffffff; color: #0f172a; width: 100%; font-size: 14px; outline: none;">
+                            <svg viewBox="0 0 24 24"
+                                style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; fill: none; stroke: #94a3b8; stroke-width: 2.2;">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg>
+                            <input type="text" id="l-user" placeholder="tu usuario" autocomplete="username"
+                                autocapitalize="none"
+                                style="padding-left: 42px; border-radius: 12px; height: 46px; border: 1px solid #cbd5e1; background: #ffffff; color: #0f172a; width: 100%; font-size: 14px; outline: none;">
                         </div>
                     </div>
-                    
+
                     <!-- Password Field -->
                     <div class="form-group" style="gap: 6px;">
-                        <label style="font-size: 11px; font-weight: 700; letter-spacing: 0.5px; color: #475569; display: flex; align-items: center; gap: 6px; font-family: var(--font);">
-                            <svg viewBox="0 0 24 24" style="width: 12px; height: 12px; fill: none; stroke: #0066ff; stroke-width: 2.5;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                        <label
+                            style="font-size: 11px; font-weight: 700; letter-spacing: 0.5px; color: #475569; display: flex; align-items: center; gap: 6px; font-family: var(--font);">
+                            <svg viewBox="0 0 24 24"
+                                style="width: 12px; height: 12px; fill: none; stroke: #0066ff; stroke-width: 2.5;">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                <path d="M7 11V7a5 5 0 0110 0v4" />
+                            </svg>
                             CONTRASEÑA
                         </label>
                         <div style="position: relative; width: 100%;">
-                            <svg viewBox="0 0 24 24" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; fill: none; stroke: #94a3b8; stroke-width: 2.2;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                            <input type="password" id="l-pass" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()" style="padding-left: 42px; padding-right: 42px; border-radius: 12px; height: 46px; border: 1px solid #cbd5e1; background: #ffffff; color: #0f172a; width: 100%; font-size: 14px; outline: none;">
+                            <svg viewBox="0 0 24 24"
+                                style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; fill: none; stroke: #94a3b8; stroke-width: 2.2;">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                <path d="M7 11V7a5 5 0 0110 0v4" />
+                            </svg>
+                            <input type="password" id="l-pass" placeholder="••••••••" autocomplete="current-password"
+                                onkeydown="if(event.key==='Enter')doLogin()"
+                                style="padding-left: 42px; padding-right: 42px; border-radius: 12px; height: 46px; border: 1px solid #cbd5e1; background: #ffffff; color: #0f172a; width: 100%; font-size: 14px; outline: none;">
                             <!-- Eye icon -->
-                            <div onclick="togglePasswordVisibility()" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); cursor: pointer; display: flex; align-items: center;">
-                                <svg id="pass-eye-icon" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #94a3b8; stroke-width: 2.2;">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                                    <circle cx="12" cy="12" r="3"/>
+                            <div onclick="togglePasswordVisibility()"
+                                style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); cursor: pointer; display: flex; align-items: center;">
+                                <svg id="pass-eye-icon" viewBox="0 0 24 24"
+                                    style="width: 18px; height: 18px; fill: none; stroke: #94a3b8; stroke-width: 2.2;">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                    <circle cx="12" cy="12" r="3" />
                                 </svg>
                             </div>
                         </div>
                     </div>
-                    
-                    <p class="err-msg" id="l-err" style="margin: 0; min-height: 18px; font-weight: 500; font-size: 12px; color: #ef4444; text-align: center;"></p>
-                    
+
+                    <p class="err-msg" id="l-err"
+                        style="margin: 0; min-height: 18px; font-weight: 500; font-size: 12px; color: #ef4444; text-align: center;">
+                    </p>
+
                     <!-- Login Button -->
-                    <button class="btn btn-primary" id="l-btn" onclick="doLogin()" style="height: 46px; border-radius: 12px; background: #0066ff; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; font-size: 15px; box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2); border: none; color: #ffffff; cursor: pointer; width: 100%;">
-                        <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: #ffffff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;">
-                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M13.8 12H3"/>
+                    <button class="btn btn-primary" id="l-btn" onclick="doLogin()"
+                        style="height: 46px; border-radius: 12px; background: #0066ff; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; font-size: 15px; box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2); border: none; color: #ffffff; cursor: pointer; width: 100%;">
+                        <svg viewBox="0 0 24 24"
+                            style="width: 18px; height: 18px; fill: none; stroke: #ffffff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;">
+                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M13.8 12H3" />
                         </svg>
                         Ingresar
                     </button>
-                    
+
                     <div style="text-align: center; margin-top: 2px;">
-                        <span onclick="showToast('Póngase en contacto con su administrador.')" style="font-size: 12px; color: #64748b; text-decoration: none; font-weight: 500; cursor: pointer;">¿Olvidaste tu contraseña?</span>
+                        <span onclick="showToast('Póngase en contacto con su administrador.')"
+                            style="font-size: 12px; color: #64748b; text-decoration: none; font-weight: 500; cursor: pointer;">¿Olvidaste
+                            tu contraseña?</span>
                     </div>
-                    
-                    <div style="text-align:center; margin-top:10px; border-top:1px solid #e2e8f0; padding-top:14px; display:flex; flex-direction:column; gap:8px;">
-                        <button class="btn btn-ghost" onclick="showOperatorScreen()" style="font-size:12px; border-radius: 12px; height: 40px; display:flex; align-items:center; justify-content:center; gap:6px; width:100%; background:#f8fafc; border: 1px solid #e2e8f0; color: #334155; font-weight: 600; cursor: pointer;">
+
+                    <div
+                        style="text-align:center; margin-top:10px; border-top:1px solid #e2e8f0; padding-top:14px; display:flex; flex-direction:column; gap:8px;">
+                        <button class="btn btn-ghost" onclick="showOperatorScreen()"
+                            style="font-size:12px; border-radius: 12px; height: 40px; display:flex; align-items:center; justify-content:center; gap:6px; width:100%; background:#f8fafc; border: 1px solid #e2e8f0; color: #334155; font-weight: 600; cursor: pointer;">
                             ⛽ ¿Eres Operador? Actualizar KM
                         </button>
-                        <button class="btn btn-ghost" onclick="showChat(true)" style="font-size:12px; border-radius: 12px; height: 40px; display:flex; align-items:center; justify-content:center; gap:6px; width:100%; background:#eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; font-weight: 600; cursor: pointer;">
+                        <button class="btn btn-ghost" onclick="showChat(true)"
+                            style="font-size:12px; border-radius: 12px; height: 40px; display:flex; align-items:center; justify-content:center; gap:6px; width:100%; background:#eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; font-weight: 600; cursor: pointer;">
                             💬 Chat de Flota (sin cuenta)
                         </button>
                     </div>
@@ -1478,26 +1606,39 @@
 
         <!-- OPERATOR MILEAGE CAPTURE -->
         <div id="s-operator" class="screen">
-            <div class="topbar" style="position: relative; overflow: hidden; background: #ffffff; border-bottom: 2px solid #e2e8f0;">
-                <div class="back-btn" onclick="show('s-login')" style="border-radius: 8px; border: 1px solid #e2e8f0; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; background: #ffffff; cursor: pointer; color: #475569; font-weight: 700; margin-right: 12px; font-size: 14px;">←</div>
-                <h1 style="font-size: 16px; font-weight: 700; color: #0f172a; flex: 1; font-family: var(--font);">Actualizar KM Operador</h1>
+            <div class="topbar"
+                style="position: relative; overflow: hidden; background: #ffffff; border-bottom: 2px solid #e2e8f0;">
+                <div class="back-btn" onclick="show('s-login')"
+                    style="border-radius: 8px; border: 1px solid #e2e8f0; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; background: #ffffff; cursor: pointer; color: #475569; font-weight: 700; margin-right: 12px; font-size: 14px;">
+                    ←</div>
+                <h1 style="font-size: 16px; font-weight: 700; color: #0f172a; flex: 1; font-family: var(--font);">
+                    Actualizar KM Operador</h1>
                 <!-- Red Slanted Accent -->
-                <div style="background: #d32f2f; width: 80px; height: 100%; position: absolute; right: 0; top: 0; clip-path: polygon(25px 0, 100% 0, 100% 100%, 0 100%); display: flex; align-items: center; justify-content: flex-end; padding-right: 12px; gap: 4px;">
-                    <div style="width: 4px; height: 16px; background: rgba(255,255,255,0.4); transform: skewX(-20deg);"></div>
-                    <div style="width: 4px; height: 16px; background: rgba(255,255,255,0.4); transform: skewX(-20deg);"></div>
+                <div
+                    style="background: #d32f2f; width: 80px; height: 100%; position: absolute; right: 0; top: 0; clip-path: polygon(25px 0, 100% 0, 100% 100%, 0 100%); display: flex; align-items: center; justify-content: flex-end; padding-right: 12px; gap: 4px;">
+                    <div style="width: 4px; height: 16px; background: rgba(255,255,255,0.4); transform: skewX(-20deg);">
                     </div>
+                    <div style="width: 4px; height: 16px; background: rgba(255,255,255,0.4); transform: skewX(-20deg);">
+                    </div>
+                </div>
             </div>
 
             <!-- STEP 1: Unit list -->
             <div id="op-step-list" class="content" style="padding: 10px 14px 14px;">
-                <p style="font-size:12px; color:#64748b; text-align:center; line-height:1.4; margin-bottom:10px; font-family:var(--font); font-weight:500;">
+                <p
+                    style="font-size:12px; color:#64748b; text-align:center; line-height:1.4; margin-bottom:10px; font-family:var(--font); font-weight:500;">
                     Selecciona tu unidad para ingresar el kilometraje.
                 </p>
 
                 <!-- Boton Chat de Flota Anónimo -->
                 <div style="margin-bottom:14px;">
-                    <button class="btn" style="background:#0066ff; width:100%; display:flex; justify-content:center; align-items:center; gap:8px;" onclick="showChat(true)">
-                        <svg viewBox="0 0 24 24" style="width:18px; height:18px; fill:none; stroke:#fff; stroke-width:2;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    <button class="btn"
+                        style="background:#0066ff; width:100%; display:flex; justify-content:center; align-items:center; gap:8px;"
+                        onclick="showChat(true)">
+                        <svg viewBox="0 0 24 24"
+                            style="width:18px; height:18px; fill:none; stroke:#fff; stroke-width:2;">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
                         Abrir Chat de Flota
                     </button>
                 </div>
@@ -1508,41 +1649,64 @@
             <!-- STEP 2: KM form (hidden until unit selected) -->
             <div id="op-step-form" style="display:none;">
                 <div class="content" style="padding:14px;">
-                    <div class="card" style="display:flex; flex-direction:column; gap:14px; border-radius:16px; padding:16px; border:1px solid #e2e8f0; box-shadow:0 4px 14px rgba(0,0,0,0.03); background:#ffffff; position:relative; overflow:hidden;">
+                    <div class="card"
+                        style="display:flex; flex-direction:column; gap:14px; border-radius:16px; padding:16px; border:1px solid #e2e8f0; box-shadow:0 4px 14px rgba(0,0,0,0.03); background:#ffffff; position:relative; overflow:hidden;">
                         <div style="position:absolute; top:0; left:0; right:0; height:4px; background:#d32f2f;"></div>
 
                         <!-- Selected unit summary card -->
-                        <div id="op-selected-card" style="display:flex; align-items:center; gap:12px; padding:10px 12px; border:1px solid #e2e8f0; border-radius:12px; background:#f8fafc; cursor:pointer;" onclick="operatorBackToList()">
-                            <img src="toyota_hilux_white.png" alt="Truck" style="width:40px; height:auto; object-fit:contain; flex-shrink:0;">
-                            <div id="op-selected-num" style="background:#f0f7ff; color:#0066ff; font-weight:700; font-size:11px; width:38px; height:24px; border-radius:6px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:var(--font);">—</div>
+                        <div id="op-selected-card"
+                            style="display:flex; align-items:center; gap:12px; padding:10px 12px; border:1px solid #e2e8f0; border-radius:12px; background:#f8fafc; cursor:pointer;"
+                            onclick="operatorBackToList()">
+                            <img src="toyota_hilux_white.png" alt="Truck"
+                                style="width:40px; height:auto; object-fit:contain; flex-shrink:0;">
+                            <div id="op-selected-num"
+                                style="background:#f0f7ff; color:#0066ff; font-weight:700; font-size:11px; width:38px; height:24px; border-radius:6px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:var(--font);">
+                                —</div>
                             <div style="flex:1; min-width:0;">
-                                <div id="op-selected-label" style="font-size:13px; font-weight:700; color:#0f172a; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-family:var(--font);">—</div>
-                                <div id="op-selected-resp" style="font-size:11px; color:#64748b; font-weight:500; font-family:var(--font);">—</div>
+                                <div id="op-selected-label"
+                                    style="font-size:13px; font-weight:700; color:#0f172a; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-family:var(--font);">
+                                    —</div>
+                                <div id="op-selected-resp"
+                                    style="font-size:11px; color:#64748b; font-weight:500; font-family:var(--font);">—
+                                </div>
                             </div>
                             <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
                                 <span id="op-selected-badge"></span>
-                                <svg viewBox="0 0 24 24" style="width:12px; height:12px; stroke:#94a3b8; fill:none; stroke-width:3;"><polyline points="6 9 12 15 18 9"/></svg>
+                                <svg viewBox="0 0 24 24"
+                                    style="width:12px; height:12px; stroke:#94a3b8; fill:none; stroke-width:3;">
+                                    <polyline points="6 9 12 15 18 9" />
+                                </svg>
                                 <span style="font-size:10px; color:#94a3b8; font-family:var(--font);">cambiar</span>
                             </div>
                         </div>
 
                         <!-- KM info row -->
-                        <div style="display:flex; justify-content:space-between; align-items:center; font-size:12px; border-top:1px solid #f1f5f9; padding-top:12px; font-family:var(--font);">
-                            <span style="color:#64748b; font-weight:700; font-size:10px;">🚗 KM ANTERIOR REGISTRADO</span>
-                            <span id="op-km-prev" style="font-weight:700; color:#0f172a; font-family:var(--font);">—</span>
+                        <div
+                            style="display:flex; justify-content:space-between; align-items:center; font-size:12px; border-top:1px solid #f1f5f9; padding-top:12px; font-family:var(--font);">
+                            <span style="color:#64748b; font-weight:700; font-size:10px;">🚗 KM ANTERIOR
+                                REGISTRADO</span>
+                            <span id="op-km-prev"
+                                style="font-weight:700; color:#0f172a; font-family:var(--font);">—</span>
                         </div>
 
                         <!-- KM input -->
                         <div class="form-group" style="gap:6px;">
-                            <label style="font-size:11px; font-weight:700; letter-spacing:0.5px; color:#475569; display:flex; align-items:center; gap:6px; font-family:var(--font);">KILOMETRAJE ACTUAL (TABLERO)</label>
+                            <label
+                                style="font-size:11px; font-weight:700; letter-spacing:0.5px; color:#475569; display:flex; align-items:center; gap:6px; font-family:var(--font);">KILOMETRAJE
+                                ACTUAL (TABLERO)</label>
                             <div style="position:relative; width:100%;">
-                                <div style="position:absolute; left:14px; top:50%; transform:translateY(-50%); pointer-events:none; font-size:14px; color:#94a3b8;">⚙️</div>
-                                <input type="number" inputmode="numeric" id="op-km-input" placeholder="Ingresa lectura del tablero" style="padding-left:42px; border-radius:12px; height:46px; border:1px solid #cbd5e1; background:#ffffff; color:#0f172a; width:100%; font-size:14px; outline:none; font-family:var(--font); font-weight:600;">
+                                <div
+                                    style="position:absolute; left:14px; top:50%; transform:translateY(-50%); pointer-events:none; font-size:14px; color:#94a3b8;">
+                                    ⚙️</div>
+                                <input type="number" inputmode="numeric" id="op-km-input"
+                                    placeholder="Ingresa lectura del tablero"
+                                    style="padding-left:42px; border-radius:12px; height:46px; border:1px solid #cbd5e1; background:#ffffff; color:#0f172a; width:100%; font-size:14px; outline:none; font-family:var(--font); font-weight:600;">
                             </div>
                         </div>
 
                         <!-- Save button -->
-                        <button class="btn btn-primary" id="op-btn" onclick="saveOperatorKM()" style="height:46px; border-radius:12px; background:linear-gradient(135deg,#d32f2f 0%,#b91c1c 100%); display:flex; align-items:center; justify-content:center; gap:8px; font-weight:600; font-size:15px; box-shadow:0 4px 12px rgba(211,47,47,0.2); border:none; color:#ffffff; cursor:pointer; width:100%; margin-top:2px;">
+                        <button class="btn btn-primary" id="op-btn" onclick="saveOperatorKM()"
+                            style="height:46px; border-radius:12px; background:linear-gradient(135deg,#d32f2f 0%,#b91c1c 100%); display:flex; align-items:center; justify-content:center; gap:8px; font-weight:600; font-size:15px; box-shadow:0 4px 12px rgba(211,47,47,0.2); border:none; color:#ffffff; cursor:pointer; width:100%; margin-top:2px;">
                             ⚙️ Registrar Kilometraje
                         </button>
                     </div>
@@ -1552,46 +1716,77 @@
 
         <!-- HOME -->
         <div id="s-home" class="screen">
-            <div class="topbar" style="background:#ffffff; border-bottom:1px solid #e2e8f0; padding: 48px 16px 14px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+            <div class="topbar"
+                style="background:#ffffff; border-bottom:1px solid #e2e8f0; padding: 48px 16px 14px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
                 <div style="display:flex; align-items:center; gap:10px;">
                     <!-- Menu Icon -->
-                    <div onclick="openSidebar()" style="cursor:pointer; display:flex; align-items:center; padding: 4px; width:32px; height:32px; justify-content:center; border-radius:8px; transition:background 0.15s;" onmousedown="this.style.background='#f1f5f9'" onmouseup="this.style.background='transparent'">
-                        <svg viewBox="0 0 24 24" style="width:20px; height:20px; stroke:#475569; fill:none; stroke-width:2.5; stroke-linecap:round;"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    <div onclick="openSidebar()"
+                        style="cursor:pointer; display:flex; align-items:center; padding: 4px; width:32px; height:32px; justify-content:center; border-radius:8px; transition:background 0.15s;"
+                        onmousedown="this.style.background='#f1f5f9'" onmouseup="this.style.background='transparent'">
+                        <svg viewBox="0 0 24 24"
+                            style="width:20px; height:20px; stroke:#475569; fill:none; stroke-width:2.5; stroke-linecap:round;">
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <line x1="3" y1="18" x2="21" y2="18" />
+                        </svg>
                     </div>
-                    
+
                     <!-- Blue square truck icon -->
-                    <div style="width:36px; height:36px; border-radius:8px; background:#0066ff; display:flex; align-items:center; justify-content:center;">
-                        <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:#ffffff; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;">
+                    <div
+                        style="width:36px; height:36px; border-radius:8px; background:#0066ff; display:flex; align-items:center; justify-content:center;">
+                        <svg viewBox="0 0 24 24"
+                            style="width:18px; height:18px; stroke:#ffffff; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;">
                             <rect x="1" y="3" width="15" height="13" rx="2" />
                             <path d="M16 8h4l3 3v5h-7V8z" />
                             <circle cx="5.5" cy="18.5" r="2.5" />
                             <circle cx="18.5" cy="18.5" r="2.5" />
                         </svg>
                     </div>
-                    
+
                     <div>
-                        <h1 style="font-size:18px; font-weight:700; color:#0f172a; margin:0; line-height:1.2; font-family:var(--font);">Inicio</h1>
-                        <span style="font-size:11px; color:#64748b; font-weight:500; font-family:var(--font);">Gestión de flota</span>
+                        <h1
+                            style="font-size:18px; font-weight:700; color:#0f172a; margin:0; line-height:1.2; font-family:var(--font);">
+                            Inicio</h1>
+                        <span style="font-size:11px; color:#64748b; font-weight:500; font-family:var(--font);">Gestión
+                            de flota</span>
                     </div>
                 </div>
-                
+
                 <div style="display:flex; align-items:center; gap:8px;">
                     <!-- Bell icon with badge -->
-                    <div onclick="openNotifPanel()" style="position:relative; cursor:pointer; width:34px; height:34px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; transition:background 0.15s;" onmousedown="this.style.background='#e2e8f0'" onmouseup="this.style.background='#f1f5f9'">
-                        <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:#475569; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-                        <span id="home-bell-badge" style="position:absolute; top:-2px; right:-2px; background:#0066ff; color:#ffffff; font-size:9px; font-weight:700; width:15px; height:15px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #ffffff;">0</span>
+                    <div onclick="openNotifPanel()"
+                        style="position:relative; cursor:pointer; width:34px; height:34px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; transition:background 0.15s;"
+                        onmousedown="this.style.background='#e2e8f0'" onmouseup="this.style.background='#f1f5f9'">
+                        <svg viewBox="0 0 24 24"
+                            style="width:18px; height:18px; stroke:#475569; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round;">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                        </svg>
+                        <span id="home-bell-badge"
+                            style="position:absolute; top:-2px; right:-2px; background:#0066ff; color:#ffffff; font-size:9px; font-weight:700; width:15px; height:15px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #ffffff;">0</span>
                     </div>
-                    
+
                     <!-- User dropdown pill -->
-                    <div onclick="openUserDropdown()" style="display:flex; align-items:center; gap:6px; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:20px; padding:4px 10px; cursor:pointer; transition:background 0.15s;" onmousedown="this.style.background='#e2e8f0'" onmouseup="this.style.background='#f1f5f9'">
-                        <svg viewBox="0 0 24 24" style="width:14px; height:14px; fill:none; stroke:#64748b; stroke-width:2.5;"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        <span id="role-label" style="font-size:11px; font-weight:600; color:#334155; max-width:80px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-family:var(--font);">—</span>
-                        <svg viewBox="0 0 24 24" style="width:10px; height:10px; fill:none; stroke:#64748b; stroke-width:3; stroke-linecap:round;"><polyline points="6 9 12 15 18 9"/></svg>
+                    <div onclick="openUserDropdown()"
+                        style="display:flex; align-items:center; gap:6px; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:20px; padding:4px 10px; cursor:pointer; transition:background 0.15s;"
+                        onmousedown="this.style.background='#e2e8f0'" onmouseup="this.style.background='#f1f5f9'">
+                        <svg viewBox="0 0 24 24"
+                            style="width:14px; height:14px; fill:none; stroke:#64748b; stroke-width:2.5;">
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                        <span id="role-label"
+                            style="font-size:11px; font-weight:600; color:#334155; max-width:80px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-family:var(--font);">—</span>
+                        <svg viewBox="0 0 24 24"
+                            style="width:10px; height:10px; fill:none; stroke:#64748b; stroke-width:3; stroke-linecap:round;">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
                     </div>
                 </div>
             </div>
             <!-- Stats strip -->
-            <div style="padding: 12px 16px 8px; background: var(--bg); border-bottom: 1px solid var(--border); flex-shrink: 0;">
+            <div
+                style="padding: 12px 16px 8px; background: var(--bg); border-bottom: 1px solid var(--border); flex-shrink: 0;">
                 <div class="stat-grid">
                     <div class="stat-box">
                         <div class="label">TOTAL</div>
@@ -1604,7 +1799,8 @@
                 </div>
             </div>
             <!-- Chips strip — lives OUTSIDE .content so overflow-y:auto doesn't block horizontal scroll -->
-            <div style="display:flex; gap:8px; flex-wrap:nowrap; overflow-x:auto; padding: 10px 16px; flex-shrink:0; background:var(--bg); -webkit-overflow-scrolling:touch;">
+            <div
+                style="display:flex; gap:8px; flex-wrap:nowrap; overflow-x:auto; padding: 10px 16px; flex-shrink:0; background:var(--bg); -webkit-overflow-scrolling:touch;">
                 <div class="chip active" onclick="setFilter('all',this)">Todas</div>
                 <div class="chip" onclick="setFilter('URGENTE',this)">🔴 Urgente</div>
                 <div class="chip" onclick="setFilter('PROXIMO',this)">🟡 Próximo</div>
@@ -1622,7 +1818,8 @@
                 <button class="nav-btn" onclick="showChat()" style="position:relative;"><svg viewBox="0 0 24 24">
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                     </svg>
-                    <span id="chat-badge-home" style="display:none;position:absolute;top:6px;right:calc(50% - 18px);background:#ef4444;color:#fff;font-size:9px;font-weight:700;width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #fff;">!</span>
+                    <span id="chat-badge-home"
+                        style="display:none;position:absolute;top:6px;right:calc(50% - 18px);background:#ef4444;color:#fff;font-size:9px;font-weight:700;width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #fff;">!</span>
                     Chat</button>
                 <button class="nav-btn" onclick="showReports()"><svg viewBox="0 0 24 24">
                         <line x1="18" y1="20" x2="18" y2="10" />
@@ -1654,15 +1851,18 @@
                         <div class="label">RESTANTES</div>
                         <div class="value" id="det-rest">—</div>
                     </div>
-                </div><div class="card">
+                </div>
+                <div class="card">
                     <div class="sec-label">PROGRESO DE INTERVALO</div>
-                    <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px">
+                    <div
+                        style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px">
                         <span id="det-recorridos"></span><span id="det-pct"></span>
                     </div>
                     <div class="km-detail-bar">
                         <div id="det-bar" class="km-detail-fill"></div>
                     </div>
-                    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-family:var(--mono);margin-top:4px">
+                    <div
+                        style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-family:var(--mono);margin-top:4px">
                         <span>0 km</span><span id="det-intervalo"></span>
                     </div>
                 </div>
@@ -1687,7 +1887,8 @@
                 <button class="nav-btn" onclick="showChat()" style="position:relative;"><svg viewBox="0 0 24 24">
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                     </svg>
-                    <span id="chat-badge-detail" style="display:none;position:absolute;top:6px;right:calc(50% - 18px);background:#ef4444;color:#fff;font-size:9px;font-weight:700;width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #fff;">!</span>
+                    <span id="chat-badge-detail"
+                        style="display:none;position:absolute;top:6px;right:calc(50% - 18px);background:#ef4444;color:#fff;font-size:9px;font-weight:700;width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #fff;">!</span>
                     Chat</button>
                 <button class="nav-btn" onclick="logout()"><svg viewBox="0 0 24 24">
                         <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
@@ -1764,7 +1965,8 @@
                 <button class="nav-btn" onclick="showChat()" style="position:relative;"><svg viewBox="0 0 24 24">
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                     </svg>
-                    <span id="chat-badge-register" style="display:none;position:absolute;top:6px;right:calc(50% - 18px);background:#ef4444;color:#fff;font-size:9px;font-weight:700;width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #fff;">!</span>
+                    <span id="chat-badge-register"
+                        style="display:none;position:absolute;top:6px;right:calc(50% - 18px);background:#ef4444;color:#fff;font-size:9px;font-weight:700;width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #fff;">!</span>
                     Chat</button>
                 <button class="nav-btn" onclick="logout()"><svg viewBox="0 0 24 24">
                         <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
@@ -1786,20 +1988,33 @@
                 </div>
                 <div class="sidebar-nav">
                     <div class="sidebar-nav-item" onclick="closeSidebar(); showHome();">
-                        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
                         Inicio
                     </div>
                     <div class="sidebar-nav-item" onclick="closeSidebar(); showChat();">
-                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
                         Chat de Flota
                     </div>
                     <div class="sidebar-nav-item" onclick="closeSidebar(); showReports();">
-                        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                        <svg viewBox="0 0 24 24">
+                            <line x1="18" y1="20" x2="18" y2="10" />
+                            <line x1="12" y1="20" x2="12" y2="4" />
+                            <line x1="6" y1="20" x2="6" y2="14" />
+                        </svg>
                         Reportes
                     </div>
                     <div class="sidebar-divider"></div>
                     <div class="sidebar-nav-item danger" onclick="closeSidebar(); logout();">
-                        <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
+                            <polyline points="16 17 21 12 16 7" />
+                            <line x1="21" y1="12" x2="9" y2="12" />
+                        </svg>
                         Cerrar sesión
                     </div>
                 </div>
@@ -1814,7 +2029,9 @@
                     <div class="notif-close-btn" onclick="closeNotifPanel()">✕</div>
                 </div>
                 <div class="notif-list" id="notif-list">
-                    <div style="text-align:center; padding:40px 20px; color:#64748b; font-size:13px; font-family:var(--font);">Sin alertas pendientes 🎉</div>
+                    <div
+                        style="text-align:center; padding:40px 20px; color:#64748b; font-size:13px; font-family:var(--font);">
+                        Sin alertas pendientes 🎉</div>
                 </div>
             </div>
         </div>
@@ -1827,12 +2044,19 @@
                     <span id="dropdown-role">—</span>
                 </div>
                 <div class="user-dropdown-item" onclick="closeUserDropdown(); showHome();">
-                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
                     Ir al Inicio
                 </div>
                 <div class="user-dropdown-divider"></div>
                 <div class="user-dropdown-item danger" onclick="closeUserDropdown(); logout();">
-                    <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" y1="12" x2="9" y2="12" />
+                    </svg>
                     Cerrar sesión
                 </div>
             </div>
@@ -1840,105 +2064,181 @@
 
         <!-- REPORTS -->
         <div id="s-reports" class="screen" style="background:#f8fafc;">
-            <div class="topbar" style="background:#ffffff; border-bottom:1px solid #e2e8f0; padding: 48px 16px 14px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+            <div class="topbar"
+                style="background:#ffffff; border-bottom:1px solid #e2e8f0; padding: 48px 16px 14px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
                 <div style="display:flex; align-items:center; gap:10px;">
                     <!-- Menu Icon -->
-                    <div onclick="openSidebar()" style="cursor:pointer; display:flex; align-items:center; padding: 4px; width:32px; height:32px; justify-content:center; border-radius:8px; transition:background 0.15s;" onmousedown="this.style.background='#f1f5f9'" onmouseup="this.style.background='transparent'">
-                        <svg viewBox="0 0 24 24" style="width:20px; height:20px; stroke:#475569; fill:none; stroke-width:2.5; stroke-linecap:round;"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    <div onclick="openSidebar()"
+                        style="cursor:pointer; display:flex; align-items:center; padding: 4px; width:32px; height:32px; justify-content:center; border-radius:8px; transition:background 0.15s;"
+                        onmousedown="this.style.background='#f1f5f9'" onmouseup="this.style.background='transparent'">
+                        <svg viewBox="0 0 24 24"
+                            style="width:20px; height:20px; stroke:#475569; fill:none; stroke-width:2.5; stroke-linecap:round;">
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <line x1="3" y1="18" x2="21" y2="18" />
+                        </svg>
                     </div>
-                    
+
                     <!-- Blue square report icon -->
-                    <div style="width:36px; height:36px; border-radius:8px; background:#0066ff; display:flex; align-items:center; justify-content:center;">
-                        <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:#ffffff; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    <div
+                        style="width:36px; height:36px; border-radius:8px; background:#0066ff; display:flex; align-items:center; justify-content:center;">
+                        <svg viewBox="0 0 24 24"
+                            style="width:18px; height:18px; stroke:#ffffff; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;">
+                            <line x1="18" y1="20" x2="18" y2="10" />
+                            <line x1="12" y1="20" x2="12" y2="4" />
+                            <line x1="6" y1="20" x2="6" y2="14" />
+                        </svg>
                     </div>
-                    
+
                     <div>
-                        <h1 style="font-size:18px; font-weight:700; color:#0f172a; margin:0; line-height:1.2; font-family:var(--font);">Reportes</h1>
-                        <span style="font-size:11px; color:#64748b; font-weight:500; font-family:var(--font);">Panel de control</span>
+                        <h1
+                            style="font-size:18px; font-weight:700; color:#0f172a; margin:0; line-height:1.2; font-family:var(--font);">
+                            Reportes</h1>
+                        <span style="font-size:11px; color:#64748b; font-weight:500; font-family:var(--font);">Panel de
+                            control</span>
                     </div>
                 </div>
-                
+
                 <div style="display:flex; align-items:center; gap:8px;">
                     <!-- Bell icon with badge -->
-                    <div onclick="openNotifPanel()" style="position:relative; cursor:pointer; width:34px; height:34px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; transition:background 0.15s;" onmousedown="this.style.background='#e2e8f0'" onmouseup="this.style.background='#f1f5f9'">
-                        <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:#475569; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-                        <span id="rep-bell-badge" style="position:absolute; top:-2px; right:-2px; background:#0066ff; color:#ffffff; font-size:9px; font-weight:700; width:15px; height:15px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #ffffff;">0</span>
+                    <div onclick="openNotifPanel()"
+                        style="position:relative; cursor:pointer; width:34px; height:34px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; transition:background 0.15s;"
+                        onmousedown="this.style.background='#e2e8f0'" onmouseup="this.style.background='#f1f5f9'">
+                        <svg viewBox="0 0 24 24"
+                            style="width:18px; height:18px; stroke:#475569; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round;">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                        </svg>
+                        <span id="rep-bell-badge"
+                            style="position:absolute; top:-2px; right:-2px; background:#0066ff; color:#ffffff; font-size:9px; font-weight:700; width:15px; height:15px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #ffffff;">0</span>
                     </div>
-                    
+
                     <!-- User dropdown pill -->
-                    <div onclick="openUserDropdown()" style="display:flex; align-items:center; gap:6px; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:20px; padding:4px 10px; cursor:pointer; transition:background 0.15s;" onmousedown="this.style.background='#e2e8f0'" onmouseup="this.style.background='#f1f5f9'">
-                        <svg viewBox="0 0 24 24" style="width:14px; height:14px; fill:none; stroke:#64748b; stroke-width:2.5;"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        <span id="role-label2" style="font-size:11px; font-weight:600; color:#334155; max-width:80px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-family:var(--font);">—</span>
-                        <svg viewBox="0 0 24 24" style="width:10px; height:10px; fill:none; stroke:#64748b; stroke-width:3; stroke-linecap:round;"><polyline points="6 9 12 15 18 9"/></svg>
+                    <div onclick="openUserDropdown()"
+                        style="display:flex; align-items:center; gap:6px; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:20px; padding:4px 10px; cursor:pointer; transition:background 0.15s;"
+                        onmousedown="this.style.background='#e2e8f0'" onmouseup="this.style.background='#f1f5f9'">
+                        <svg viewBox="0 0 24 24"
+                            style="width:14px; height:14px; fill:none; stroke:#64748b; stroke-width:2.5;">
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                        <span id="role-label2"
+                            style="font-size:11px; font-weight:600; color:#334155; max-width:80px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-family:var(--font);">—</span>
+                        <svg viewBox="0 0 24 24"
+                            style="width:10px; height:10px; fill:none; stroke:#64748b; stroke-width:3; stroke-linecap:round;">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
                     </div>
                 </div>
             </div>
-            
+
             <div class="content" style="padding:14px; display:flex; flex-direction:column; gap:12px;">
 
                 <div class="stat-grid" style="display:grid; grid-template-columns: 1.2fr 1fr; gap:12px;">
-                    
+
                     <!-- URGENTES CARD -->
-                    <div class="stat-box" style="position:relative; background:#ffffff; border:1px solid #e2e8f0; border-radius:18px; padding:16px; overflow:hidden; min-height:120px; display:flex; flex-direction:column; justify-content:space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); border-left: 4px solid var(--red);">
+                    <div class="stat-box"
+                        style="position:relative; background:#ffffff; border:1px solid #e2e8f0; border-radius:18px; padding:16px; overflow:hidden; min-height:120px; display:flex; flex-direction:column; justify-content:space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); border-left: 4px solid var(--red);">
                         <!-- Background image -->
-                        <div style="position:absolute; right:0; top:0; bottom:0; width:65%; background:url('urgente_bg.png') no-repeat center right; background-size:cover; border-radius:0 17px 17px 0; z-index:1; opacity: 0.85; mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%); -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);"></div>
-                        
-                        <div style="position:relative; z-index:2; display:flex; flex-direction:column; height:100%; justify-content:space-between;">
-                            <div>
-                                <div style="font-size:10px; font-weight:700; color:#ef4444; letter-spacing:0.5px; font-family:var(--font);">URGENTES</div>
-                                <div id="rep-urgentes" style="font-size:32px; font-weight:700; color:#0f172a; margin-top:2px;">0</div>
-                            </div>
-                            <div style="font-size:11px; color:#64748b; font-weight:500; margin-top:8px;">Requieren atención inmediata</div>
+                        <div
+                            style="position:absolute; right:0; top:0; bottom:0; width:65%; background:url('urgente_bg.png') no-repeat center right; background-size:cover; border-radius:0 17px 17px 0; z-index:1; opacity: 0.85; mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%); -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);">
                         </div>
-                        
+
+                        <div
+                            style="position:relative; z-index:2; display:flex; flex-direction:column; height:100%; justify-content:space-between;">
+                            <div>
+                                <div
+                                    style="font-size:10px; font-weight:700; color:#ef4444; letter-spacing:0.5px; font-family:var(--font);">
+                                    URGENTES</div>
+                                <div id="rep-urgentes"
+                                    style="font-size:32px; font-weight:700; color:#0f172a; margin-top:2px;">0</div>
+                            </div>
+                            <div style="font-size:11px; color:#64748b; font-weight:500; margin-top:8px;">Requieren
+                                atención inmediata</div>
+                        </div>
+
                         <!-- Absolute Exclamation overlay icon -->
-                        <div style="position:absolute; right:16px; top:50%; transform:translateY(-50%); z-index:2; width:36px; height:36px; border-radius:50%; background:rgba(239, 68, 68, 0.15); border: 2px solid rgba(239, 68, 68, 0.4); display:flex; align-items:center; justify-content:center;">
-                            <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:#ef4444; fill:none; stroke-width:3; stroke-linecap:round;"><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <div
+                            style="position:absolute; right:16px; top:50%; transform:translateY(-50%); z-index:2; width:36px; height:36px; border-radius:50%; background:rgba(239, 68, 68, 0.15); border: 2px solid rgba(239, 68, 68, 0.4); display:flex; align-items:center; justify-content:center;">
+                            <svg viewBox="0 0 24 24"
+                                style="width:18px; height:18px; stroke:#ef4444; fill:none; stroke-width:3; stroke-linecap:round;">
+                                <line x1="12" y1="8" x2="12" y2="12" />
+                                <line x1="12" y1="16" x2="12.01" y2="16" />
+                            </svg>
                         </div>
                     </div>
-                    
+
                     <!-- PRÓXIMOS CARD -->
-                    <div class="stat-box" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:18px; padding:16px; min-height:120px; display:flex; flex-direction:column; justify-content:space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); border-left: 4px solid var(--amber);">
+                    <div class="stat-box"
+                        style="background:#ffffff; border:1px solid #e2e8f0; border-radius:18px; padding:16px; min-height:120px; display:flex; flex-direction:column; justify-content:space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); border-left: 4px solid var(--amber);">
                         <div style="display:flex; justify-content:space-between; align-items:flex-start; width:100%;">
                             <div>
-                                <div style="font-size:10px; font-weight:700; color:#f59e0b; letter-spacing:0.5px; font-family:var(--font);">PRÓXIMOS</div>
-                                <div id="rep-proximos" style="font-size:32px; font-weight:700; color:#0f172a; margin-top:2px;">0</div>
+                                <div
+                                    style="font-size:10px; font-weight:700; color:#f59e0b; letter-spacing:0.5px; font-family:var(--font);">
+                                    PRÓXIMOS</div>
+                                <div id="rep-proximos"
+                                    style="font-size:32px; font-weight:700; color:#0f172a; margin-top:2px;">0</div>
                             </div>
                             <!-- Calendar Icon -->
-                            <div style="width:36px; height:36px; border-radius:50%; background:rgba(245, 158, 11, 0.1); display:flex; align-items:center; justify-content:center;">
-                                <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:#f59e0b; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            <div
+                                style="width:36px; height:36px; border-radius:50%; background:rgba(245, 158, 11, 0.1); display:flex; align-items:center; justify-content:center;">
+                                <svg viewBox="0 0 24 24"
+                                    style="width:18px; height:18px; stroke:#f59e0b; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
                             </div>
                         </div>
-                        <div style="font-size:11px; color:#64748b; font-weight:500; margin-top:8px;">Por vencer pronto</div>
+                        <div style="font-size:11px; color:#64748b; font-weight:500; margin-top:8px;">Por vencer pronto
+                        </div>
                     </div>
                 </div>
 
                 <!-- Botón bajo demanda — solo visible para Coordinador y Supervisor -->
                 <div id="btn-demanda-wrap" style="display:none; width:100%;">
-                    <div onclick="enviarReporteDemanda()" style="width:100%; background:#ffffff; border:1px solid #e2e8f0; border-radius:18px; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; cursor:pointer; box-shadow:0 4px 6px -1px rgba(0,0,0,0.01); transition: all 0.2s;">
+                    <div onclick="enviarReporteDemanda()"
+                        style="width:100%; background:#ffffff; border:1px solid #e2e8f0; border-radius:18px; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; cursor:pointer; box-shadow:0 4px 6px -1px rgba(0,0,0,0.01); transition: all 0.2s;">
                         <div style="display:flex; align-items:center; gap:12px;">
-                            <div style="width:36px; height:36px; border-radius:50%; background:#0066ff; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                                <svg viewBox="0 0 24 24" style="width:16px; height:16px; stroke:#ffffff; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; transform: rotate(15deg);"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            <div
+                                style="width:36px; height:36px; border-radius:50%; background:#0066ff; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                                <svg viewBox="0 0 24 24"
+                                    style="width:16px; height:16px; stroke:#ffffff; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; transform: rotate(15deg);">
+                                    <line x1="22" y1="2" x2="11" y2="13" />
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                                </svg>
                             </div>
                             <div style="text-align:left;">
-                                <div style="font-size:14px; font-weight:700; color:#0f172a; font-family:var(--font);" id="btn-demanda-text">Enviar reporte</div>
-                                <div style="font-size:11px; color:#64748b; font-weight:500; margin-top:2px; font-family:var(--font);">Llega a los 4 correos del equipo</div>
+                                <div style="font-size:14px; font-weight:700; color:#0f172a; font-family:var(--font);"
+                                    id="btn-demanda-text">Enviar reporte</div>
+                                <div
+                                    style="font-size:11px; color:#64748b; font-weight:500; margin-top:2px; font-family:var(--font);">
+                                    Llega a los 4 correos del equipo</div>
                             </div>
                         </div>
-                        <div style="width:28px; height:28px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                            <svg viewBox="0 0 24 24" style="width:14px; height:14px; stroke:#0066ff; fill:none; stroke-width:3; stroke-linecap:round; stroke-linejoin:round;"><polyline points="9 18 15 12 9 6"/></svg>
+                        <div
+                            style="width:28px; height:28px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                            <svg viewBox="0 0 24 24"
+                                style="width:14px; height:14px; stroke:#0066ff; fill:none; stroke-width:3; stroke-linecap:round; stroke-linejoin:round;">
+                                <polyline points="9 18 15 12 9 6" />
+                            </svg>
                         </div>
                     </div>
                 </div>
 
                 <!-- Unified Fleet Card -->
-                <div class="card" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:18px; padding:16px 0; width:100%; display:flex; flex-direction:column; gap:14px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.01);">
+                <div class="card"
+                    style="background:#ffffff; border:1px solid #e2e8f0; border-radius:18px; padding:16px 0; width:100%; display:flex; flex-direction:column; gap:14px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.01);">
                     <!-- Header & Search Input -->
-                    <div style="display:flex; justify-content:space-between; align-items:center; padding:0 16px; gap:12px;">
+                    <div
+                        style="display:flex; justify-content:space-between; align-items:center; padding:0 16px; gap:12px;">
                         <div style="display:flex; align-items:center; gap:10px; flex:1; min-width:0;">
                             <!-- Blue truck icon -->
-                            <div style="width:36px; height:36px; border-radius:50%; background:rgba(0, 102, 255, 0.08); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                                <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:#0066ff; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round;">
+                            <div
+                                style="width:36px; height:36px; border-radius:50%; background:rgba(0, 102, 255, 0.08); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                                <svg viewBox="0 0 24 24"
+                                    style="width:18px; height:18px; stroke:#0066ff; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round;">
                                     <rect x="1" y="3" width="15" height="13" rx="2" />
                                     <path d="M16 8h4l3 3v5h-7V8z" />
                                     <circle cx="5.5" cy="18.5" r="2.5" />
@@ -1946,34 +2246,49 @@
                                 </svg>
                             </div>
                             <div style="flex:1; min-width:0;">
-                                <div style="font-size:14px; font-weight:700; color:#0f172a; font-family:var(--font);">Estado de la flota</div>
-                                <div style="font-size:11px; color:#64748b; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:2px; font-family:var(--font);">Monitorea el estado actual de todos los vehículos</div>
+                                <div style="font-size:14px; font-weight:700; color:#0f172a; font-family:var(--font);">
+                                    Estado de la flota</div>
+                                <div
+                                    style="font-size:11px; color:#64748b; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:2px; font-family:var(--font);">
+                                    Monitorea el estado actual de todos los vehículos</div>
                             </div>
                         </div>
-                        
+
                         <!-- Search bar -->
                         <div style="position:relative; width:140px; flex-shrink:0;">
-                            <input type="text" id="fleet-search" oninput="filterFleetList()" placeholder="Buscar vehículo..." style="width:100%; height:32px; border-radius:8px; border:1px solid #cbd5e1; padding:0 8px 0 28px; font-size:12px; background:#f8fafc; outline:none; font-family:var(--font);">
-                            <svg viewBox="0 0 24 24" style="position:absolute; left:8px; top:50%; transform:translateY(-50%); width:12px; height:12px; stroke:#64748b; fill:none; stroke-width:3; stroke-linecap:round;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            <input type="text" id="fleet-search" oninput="filterFleetList()"
+                                placeholder="Buscar vehículo..."
+                                style="width:100%; height:32px; border-radius:8px; border:1px solid #cbd5e1; padding:0 8px 0 28px; font-size:12px; background:#f8fafc; outline:none; font-family:var(--font);">
+                            <svg viewBox="0 0 24 24"
+                                style="position:absolute; left:8px; top:50%; transform:translateY(-50%); width:12px; height:12px; stroke:#64748b; fill:none; stroke-width:3; stroke-linecap:round;">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg>
                         </div>
                     </div>
-                    
+
                     <div id="rep-fleet" style="display:flex; flex-direction:column; padding: 0 16px;"></div>
                 </div>
 
                 <!-- CONFIGURACION -->
-                <div class="card" style="display:flex;flex-direction:column;gap:12px;background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 6px -1px rgba(0,0,0,0.01);" id="coord-settings">
-                    <div class="sec-label" style="font-weight:700;color:#0f172a;font-size:12px;">CONFIGURACIÓN (SOLO COORDINADOR)</div>
+                <div class="card"
+                    style="display:flex;flex-direction:column;gap:12px;background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;box-shadow:0 4px 6px -1px rgba(0,0,0,0.01);"
+                    id="coord-settings">
+                    <div class="sec-label" style="font-weight:700;color:#0f172a;font-size:12px;">CONFIGURACIÓN (SOLO
+                        COORDINADOR)</div>
                     <div class="form-group">
                         <label>INTERVALO DE MANTENIMIENTO (KM)</label>
-                        <input type="number" id="cfg-intervalo" value="5000" placeholder="Ej: 5000" style="border-radius:10px;">
+                        <input type="number" id="cfg-intervalo" value="5000" placeholder="Ej: 5000"
+                            style="border-radius:10px;">
                     </div>
-                    <button class="btn btn-ghost" onclick="updateGlobalInterval()" style="border-radius:10px;height:42px;display:flex;align-items:center;justify-content:center;">Actualizar para toda la flota</button>
+                    <button class="btn btn-ghost" onclick="updateGlobalInterval()"
+                        style="border-radius:10px;height:42px;display:flex;align-items:center;justify-content:center;">Actualizar
+                        para toda la flota</button>
                 </div>
-                
+
                 <div id="rep-monthly" style="display:flex;flex-direction:column;gap:0;"></div>
             </div>
-            
+
             <div class="nav">
                 <button class="nav-btn" onclick="showHome()"><svg viewBox="0 0 24 24">
                         <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
@@ -1982,7 +2297,8 @@
                 <button class="nav-btn" onclick="showChat()" style="position:relative;"><svg viewBox="0 0 24 24">
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                     </svg>
-                    <span id="chat-badge-reports" style="display:none;position:absolute;top:6px;right:calc(50% - 18px);background:#ef4444;color:#fff;font-size:9px;font-weight:700;width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #fff;">!</span>
+                    <span id="chat-badge-reports"
+                        style="display:none;position:absolute;top:6px;right:calc(50% - 18px);background:#ef4444;color:#fff;font-size:9px;font-weight:700;width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #fff;">!</span>
                     Chat</button>
                 <button class="nav-btn active"><svg viewBox="0 0 24 24">
                         <line x1="18" y1="20" x2="18" y2="10" />
@@ -1999,21 +2315,33 @@
 
         <!-- CHAT -->
         <div id="s-chat" class="screen">
-            <div class="topbar" style="background:#ffffff; border-bottom:1px solid #e2e8f0; padding: 48px 16px 14px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+            <div class="topbar"
+                style="background:#ffffff; border-bottom:1px solid #e2e8f0; padding: 48px 16px 14px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
                 <div style="display:flex; align-items:center; gap:10px;">
                     <!-- Botón Atrás -->
-                    <div onclick="closeChat()" style="cursor:pointer; display:flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:8px; border:1px solid #e2e8f0; background:#f8fafc; margin-right:4px;">
-                        <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:#475569; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                    <div onclick="closeChat()"
+                        style="cursor:pointer; display:flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:8px; border:1px solid #e2e8f0; background:#f8fafc; margin-right:4px;">
+                        <svg viewBox="0 0 24 24"
+                            style="width:18px; height:18px; stroke:#475569; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;">
+                            <line x1="19" y1="12" x2="5" y2="12" />
+                            <polyline points="12 19 5 12 12 5" />
+                        </svg>
                     </div>
 
-                    <div style="width:36px; height:36px; border-radius:8px; background:#0066ff; display:flex; align-items:center; justify-content:center;">
-                        <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:#ffffff; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;">
+                    <div
+                        style="width:36px; height:36px; border-radius:8px; background:#0066ff; display:flex; align-items:center; justify-content:center;">
+                        <svg viewBox="0 0 24 24"
+                            style="width:18px; height:18px; stroke:#ffffff; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;">
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                         </svg>
                     </div>
                     <div>
-                        <h1 style="font-size:18px; font-weight:700; color:#0f172a; margin:0; line-height:1.2; font-family:var(--font);">Chat de Flota</h1>
-                        <span style="font-size:11px; color:#64748b; font-weight:500; font-family:var(--font);">Comunicación activa</span>
+                        <h1
+                            style="font-size:18px; font-weight:700; color:#0f172a; margin:0; line-height:1.2; font-family:var(--font);">
+                            Chat de Flota</h1>
+                        <span
+                            style="font-size:11px; color:#64748b; font-weight:500; font-family:var(--font);">Comunicación
+                            activa</span>
                     </div>
                 </div>
                 <span class="role-pill" id="chat-count-label">Conectado</span>
@@ -2033,27 +2361,42 @@
             </div>
 
             <!-- Attachment previews -->
-            <div id="chat-img-preview-container" class="chat-input-bar" style="display: none; border-bottom: none; padding-bottom: 0;">
+            <div id="chat-img-preview-container" class="chat-input-bar"
+                style="display: none; border-bottom: none; padding-bottom: 0;">
                 <div class="chat-preview-box">
                     <img id="chat-preview-img" class="chat-preview-img" src="" alt="Vista previa">
                     <div id="chat-preview-filename" class="chat-preview-info">foto.jpg</div>
                     <span class="chat-preview-close" onclick="cancelAttachedPhoto()">×</span>
                 </div>
             </div>
-            <div id="chat-audio-preview-container" class="chat-input-bar" style="display: none; border-bottom: none; padding-bottom: 0;">
+            <div id="chat-audio-preview-container" class="chat-input-bar"
+                style="display: none; border-bottom: none; padding-bottom: 0;">
                 <div class="chat-preview-box" style="background:#f0fdf4; border-color:#86efac;">
-                    <div style="width:36px;height:36px;border-radius:50%;background:#10b981;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                        <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                    <div
+                        style="width:36px;height:36px;border-radius:50%;background:#10b981;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <svg viewBox="0 0 24 24"
+                            style="width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                            <line x1="12" y1="19" x2="12" y2="23" />
+                            <line x1="8" y1="23" x2="16" y2="23" />
+                        </svg>
                     </div>
                     <div class="chat-preview-info" id="chat-audio-preview-label">Audio (0s)</div>
                     <audio id="chat-audio-preview-player" controls style="height:28px;flex:1;min-width:0;"></audio>
                     <span class="chat-preview-close" onclick="cancelAttachedAudio()">×</span>
                 </div>
             </div>
-            <div id="chat-doc-preview-container" class="chat-input-bar" style="display: none; border-bottom: none; padding-bottom: 0;">
+            <div id="chat-doc-preview-container" class="chat-input-bar"
+                style="display: none; border-bottom: none; padding-bottom: 0;">
                 <div class="chat-preview-box" style="background:#faf5ff; border-color:#d8b4fe;">
-                    <div style="width:36px;height:36px;border-radius:50%;background:#7c3aed;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                        <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <div
+                        style="width:36px;height:36px;border-radius:50%;background:#7c3aed;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <svg viewBox="0 0 24 24"
+                            style="width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                        </svg>
                     </div>
                     <div class="chat-preview-info" id="chat-doc-preview-label">documento.pdf</div>
                     <span class="chat-preview-close" onclick="cancelAttachedDoc()">×</span>
@@ -2064,33 +2407,57 @@
             <div class="chat-input-bar">
                 <!-- Recording indicator -->
                 <div id="chat-recording-indicator" style="display:none; align-items:center; gap:8px; padding: 4px 0;">
-                    <div style="width:10px;height:10px;border-radius:50%;background:#ef4444;animation:pulse 1s infinite;"></div>
-                    <span style="font-size:12px;color:#ef4444;font-weight:600;font-family:var(--font);">Grabando... <span id="chat-rec-timer">0s</span></span>
+                    <div
+                        style="width:10px;height:10px;border-radius:50%;background:#ef4444;animation:pulse 1s infinite;">
+                    </div>
+                    <span style="font-size:12px;color:#ef4444;font-weight:600;font-family:var(--font);">Grabando...
+                        <span id="chat-rec-timer">0s</span></span>
                     <span style="flex:1;"></span>
-                    <span onclick="cancelRecording()" style="font-size:12px;color:#64748b;cursor:pointer;font-family:var(--font);">Cancelar</span>
+                    <span onclick="cancelRecording()"
+                        style="font-size:12px;color:#64748b;cursor:pointer;font-family:var(--font);">Cancelar</span>
                 </div>
                 <div class="chat-input-row">
                     <!-- Photo button -->
                     <div class="chat-attach-btn" onclick="triggerPhotoSelect()" title="Foto">
-                        <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
+                            </path>
+                            <circle cx="12" cy="13" r="4"></circle>
+                        </svg>
                     </div>
                     <!-- Audio button -->
-                    <div class="chat-attach-btn" id="chat-mic-btn" onclick="toggleRecording()" title="Audio" style="background:#f0fdf4; border-color:#86efac;">
-                        <svg viewBox="0 0 24 24" style="stroke:#10b981;"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                    <div class="chat-attach-btn" id="chat-mic-btn" onclick="toggleRecording()" title="Audio"
+                        style="background:#f0fdf4; border-color:#86efac;">
+                        <svg viewBox="0 0 24 24" style="stroke:#10b981;">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                            <line x1="12" y1="19" x2="12" y2="23" />
+                            <line x1="8" y1="23" x2="16" y2="23" />
+                        </svg>
                     </div>
                     <!-- Document button -->
-                    <div class="chat-attach-btn" onclick="triggerDocSelect()" title="Documento" style="background:#faf5ff; border-color:#d8b4fe;">
-                        <svg viewBox="0 0 24 24" style="stroke:#7c3aed;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <div class="chat-attach-btn" onclick="triggerDocSelect()" title="Documento"
+                        style="background:#faf5ff; border-color:#d8b4fe;">
+                        <svg viewBox="0 0 24 24" style="stroke:#7c3aed;">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                        </svg>
                     </div>
 
                     <!-- Hidden file inputs -->
-                    <input type="file" id="chat-photo-input" accept="image/*" style="display: none;" onchange="handlePhotoSelected(event)">
-                    <input type="file" id="chat-doc-input" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.zip" style="display: none;" onchange="handleDocSelected(event)">
+                    <input type="file" id="chat-photo-input" accept="image/*" style="display: none;"
+                        onchange="handlePhotoSelected(event)">
+                    <input type="file" id="chat-doc-input" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.zip"
+                        style="display: none;" onchange="handleDocSelected(event)">
 
-                    <input type="text" id="chat-message-input" class="chat-input-field" placeholder="Escribe un mensaje..." onkeydown="if(event.key==='Enter')sendChatMessage()">
+                    <input type="text" id="chat-message-input" class="chat-input-field"
+                        placeholder="Escribe un mensaje..." onkeydown="if(event.key==='Enter')sendChatMessage()">
 
                     <button class="chat-send-btn" onclick="sendChatMessage()">
-                        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        <svg viewBox="0 0 24 24">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -2289,7 +2656,7 @@
                 const name = currentUser.nombre || currentUser.usuario;
                 document.getElementById('sidebar-name').textContent = name;
                 document.getElementById('sidebar-role').textContent = currentUser.rol;
-                document.getElementById('sidebar-avatar').textContent = name.slice(0,1).toUpperCase();
+                document.getElementById('sidebar-avatar').textContent = name.slice(0, 1).toUpperCase();
             }
             document.getElementById('sidebar-overlay').classList.add('open');
         }
@@ -2409,29 +2776,29 @@
             document.getElementById("stat-total").textContent = unidades.length;
 
             // Dynamic second stat box based on active filter
-            const labelEl  = document.getElementById("stat-alerts-label");
-            const valueEl  = document.getElementById("stat-alerts");
+            const labelEl = document.getElementById("stat-alerts-label");
+            const valueEl = document.getElementById("stat-alerts");
             if (filtroActivo === "all") {
                 const alerts = unidades.filter(u => u.alerta === "URGENTE" || u.alerta === "PROXIMO").length;
-                labelEl.textContent  = "ALERTAS";
-                valueEl.textContent  = alerts;
-                valueEl.style.color  = "var(--amber)";
+                labelEl.textContent = "ALERTAS";
+                valueEl.textContent = alerts;
+                valueEl.style.color = "var(--amber)";
             } else if (filtroActivo === "URGENTE") {
-                labelEl.textContent  = "URGENTE";
-                valueEl.textContent  = filtered.length;
-                valueEl.style.color  = "var(--red)";
+                labelEl.textContent = "URGENTE";
+                valueEl.textContent = filtered.length;
+                valueEl.style.color = "var(--red)";
             } else if (filtroActivo === "PROXIMO") {
-                labelEl.textContent  = "PRÓXIMO";
-                valueEl.textContent  = filtered.length;
-                valueEl.style.color  = "var(--amber)";
+                labelEl.textContent = "PRÓXIMO";
+                valueEl.textContent = filtered.length;
+                valueEl.style.color = "var(--amber)";
             } else if (filtroActivo === "AL_DIA") {
-                labelEl.textContent  = "AL DÍA";
-                valueEl.textContent  = filtered.length;
-                valueEl.style.color  = "var(--green)";
+                labelEl.textContent = "AL DÍA";
+                valueEl.textContent = filtered.length;
+                valueEl.style.color = "var(--green)";
             } else if (filtroActivo === "SIN_KM") {
-                labelEl.textContent  = "SIN KM";
-                valueEl.textContent  = filtered.length;
-                valueEl.style.color  = "var(--muted)";
+                labelEl.textContent = "SIN KM";
+                valueEl.textContent = filtered.length;
+                valueEl.style.color = "var(--muted)";
             }
             const list = document.getElementById("unit-list");
             if (!filtered.length) {
@@ -2440,7 +2807,7 @@
             }
             list.innerHTML = filtered.map(u => {
                 const unitNum = u.id.replace("U-", "");
-                
+
                 let badgeBg, badgeColor, badgeDotColor, labelText, barColorVal;
                 if (u.alerta === "AL_DIA") {
                     badgeBg = "#ecfdf5"; badgeColor = "#065f46"; badgeDotColor = "#10b981"; barColorVal = "#10b981"; labelText = "Al día";
@@ -2451,9 +2818,9 @@
                 } else {
                     badgeBg = "#f1f5f9"; badgeColor = "#475569"; badgeDotColor = "#64748b"; barColorVal = "#cbd5e1"; labelText = "Sin km";
                 }
-                
+
                 const pct = Math.min(100, u.pct_uso || 0);
-                
+
                 return `
                     <div class="fleet-row" onclick="openUnit('${u.id}')" style="display:flex; align-items:center; gap:12px; padding:12px 10px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg2); cursor:pointer;">
                         <!-- Truck Image -->
@@ -2502,16 +2869,16 @@
             const badge = document.getElementById("det-badge");
             badge.className = "badge " + badgeClass(u.alerta);
             badge.textContent = badgeLabel(u.alerta);
-            document.getElementById("det-recorridos").textContent = `${(u.recorridos||0).toLocaleString()} km recorridos`;
+            document.getElementById("det-recorridos").textContent = `${(u.recorridos || 0).toLocaleString()} km recorridos`;
             document.getElementById("det-pct").textContent = `${pct.toFixed(0)}%`;
             document.getElementById("det-bar").style.width = pct + "%";
             document.getElementById("det-bar").style.background = barColor(u.alerta);
-            document.getElementById("det-intervalo").textContent = (u.intervalo||5000).toLocaleString() + " km";
+            document.getElementById("det-intervalo").textContent = (u.intervalo || 5000).toLocaleString() + " km";
             document.getElementById("det-info").innerHTML = [
                 ["Descripción", u.descripcion],
                 ["Responsable", u.responsable || "Sin asignar"],
                 ["Última Fecha Afinación", u.fecha_aceite || "Sin registro"],
-                ["Intervalo Global", (u.intervalo||5000).toLocaleString() + " km"],
+                ["Intervalo Global", (u.intervalo || 5000).toLocaleString() + " km"],
             ].map(([k, v]) => `<div style="display:flex;justify-content:space-between;font-size:13px;padding:7px 0;border-bottom:1px solid var(--border)">
     <span style="color:var(--muted);font-family:var(--mono);font-size:11px">${k}</span>
     <span style="font-weight:500">${v}</span></div>`).join("");
@@ -2643,7 +3010,7 @@
 
                 document.getElementById("rep-urgentes").textContent = urgentes.length;
                 document.getElementById("rep-proximos").textContent = proximos.length;
-                
+
                 // Dynamic notification bell badge
                 const alertsCount = urgentes.length + proximos.length;
                 const badgeHome = document.getElementById("home-bell-badge");
@@ -2660,7 +3027,7 @@
                 const repFleetEl = document.getElementById("rep-fleet");
                 repFleetEl.innerHTML = sortedUnidades.map(u => {
                     const unitNum = u.id.replace("U-", "");
-                    
+
                     let badgeBg, badgeColor, badgeDotColor, labelText, barColor;
                     if (u.alerta === "AL_DIA") {
                         badgeBg = "#ecfdf5"; badgeColor = "#065f46"; badgeDotColor = "#10b981"; barColor = "#10b981"; labelText = "Al día";
@@ -2671,10 +3038,10 @@
                     } else {
                         badgeBg = "#f1f5f9"; badgeColor = "#475569"; badgeDotColor = "#64748b"; barColor = "#cbd5e1"; labelText = "Sin km";
                     }
-                    
+
                     const pct = Math.min(100, u.pct_uso || 0);
                     const searchableText = `${u.id} ${u.descripcion} ${u.responsable}`.toLowerCase();
-                    
+
                     return `
                         <div class="fleet-row" onclick="openUnit('${u.id}')" data-search="${searchableText}" style="display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid #f1f5f9; cursor:pointer;">
                             <!-- Truck Image -->
@@ -2708,7 +3075,7 @@
                         </div>
                     `;
                 }).join("");
-                
+
                 // Clear search bar
                 document.getElementById("fleet-search").value = "";
             } catch (e) { showToast("Error al cargar reportes"); }
@@ -2751,16 +3118,16 @@
                 console.log("📤 Enviando petición POST a:", API);
                 const params = apiParams();
                 console.log("📦 Parámetros enviados:", JSON.stringify({ accion: "reporte_demanda", ...params }));
-                
-                const r = await fetch(API, { 
-                    method: "POST", 
-                    body: JSON.stringify({ accion: "reporte_demanda", ...params }) 
+
+                const r = await fetch(API, {
+                    method: "POST",
+                    body: JSON.stringify({ accion: "reporte_demanda", ...params })
                 });
-                
+
                 console.log("📥 Petición HTTP completada. Status:", r.status);
                 const res = await r.json();
                 console.log("🔍 Respuesta parseada del servidor:", JSON.stringify(res));
-                
+
                 if (res.ok) {
                     showToast("✅ " + (res.mensaje || "Reporte enviado correctamente"), 3500);
                 } else {
@@ -2836,7 +3203,7 @@
             u.recorridos = Math.max(0, newKM - lastServiceKM);
             u.restantes = (u.intervalo || 5000) - u.recorridos;
             u.pct_uso = (u.recorridos / (u.intervalo || 5000)) * 100;
-            
+
             if (u.pct_uso <= 60) {
                 u.alerta = "AL_DIA";
             } else if (u.pct_uso <= 100) {
@@ -3016,10 +3383,10 @@
             document.getElementById("op-km-prev").textContent = u.km_actual > 0 ? u.km_actual.toLocaleString() + " km" : "Sin registro";
 
             let badgeBg, badgeColor, badgeDotColor, labelText;
-            if (u.alerta === "AL_DIA") { badgeBg="#ecfdf5"; badgeColor="#065f46"; badgeDotColor="#10b981"; labelText="Al día"; }
-            else if (u.alerta === "PROXIMO") { badgeBg="#fffbeb"; badgeColor="#92400e"; badgeDotColor="#f59e0b"; labelText="Próximo"; }
-            else if (u.alerta === "URGENTE") { badgeBg="#fef2f2"; badgeColor="#991b1b"; badgeDotColor="#ef4444"; labelText="Urgente"; }
-            else { badgeBg="#f1f5f9"; badgeColor="#475569"; badgeDotColor="#64748b"; labelText="Sin km"; }
+            if (u.alerta === "AL_DIA") { badgeBg = "#ecfdf5"; badgeColor = "#065f46"; badgeDotColor = "#10b981"; labelText = "Al día"; }
+            else if (u.alerta === "PROXIMO") { badgeBg = "#fffbeb"; badgeColor = "#92400e"; badgeDotColor = "#f59e0b"; labelText = "Próximo"; }
+            else if (u.alerta === "URGENTE") { badgeBg = "#fef2f2"; badgeColor = "#991b1b"; badgeDotColor = "#ef4444"; labelText = "Urgente"; }
+            else { badgeBg = "#f1f5f9"; badgeColor = "#475569"; badgeDotColor = "#64748b"; labelText = "Sin km"; }
             document.getElementById("op-selected-badge").innerHTML = `<div style="background:${badgeBg}; color:${badgeColor}; font-size:10px; font-weight:700; padding:4px 8px; border-radius:12px; display:flex; align-items:center; gap:4px; font-family:var(--font);"><span style="color:${badgeDotColor};">●</span> ${labelText}</div>`;
 
             const input = document.getElementById("op-km-input");
@@ -3132,7 +3499,7 @@
         const db = firebase.firestore();
         const storage = firebase.storage();
         let messaging = null;
-        try { messaging = firebase.messaging(); } catch(e) { console.warn('FCM not supported:', e); }
+        try { messaging = firebase.messaging(); } catch (e) { console.warn('FCM not supported:', e); }
 
         // ── ImgBB — API gratuita para subir fotos ─────────────────────────────
         // Obtén tu API key gratis en https://imgbb.com/
@@ -3140,28 +3507,28 @@
         const IMGBB_API_KEY = '618111eea278dce1d160360c7d295a83'; // ⚠️ Clave de ImgBB configurada
 
         // ── Variables de Chat ─────────────────────────────────────────
-        let chatUnsubscribe   = null;   // función para desuscribir listener de Firestore
+        let chatUnsubscribe = null;   // función para desuscribir listener de Firestore
         let attachedPhotoFile = null;   // archivo de imagen seleccionado
         let attachedAudioBlob = null;   // blob de audio grabado
         let attachedAudioDuration = 0; // duración del audio en segundos
-        let attachedDocFile   = null;   // archivo de documento seleccionado
-        let chatLastSeenTs    = 0;      // timestamp del último mensaje visto
-        let chatUnread        = 0;      // contador de mensajes no leídos
-        let mediaRecorder     = null;   // MediaRecorder para audio
-        let recordingChunks   = [];     // chunks del audio grabado
-        let recordingTimer    = null;   // intervalo del timer de grabación
-        let recordingSeconds  = 0;      // segundos grabados
+        let attachedDocFile = null;   // archivo de documento seleccionado
+        let chatLastSeenTs = 0;      // timestamp del último mensaje visto
+        let chatUnread = 0;      // contador de mensajes no leídos
+        let mediaRecorder = null;   // MediaRecorder para audio
+        let recordingChunks = [];     // chunks del audio grabado
+        let recordingTimer = null;   // intervalo del timer de grabación
+        let recordingSeconds = 0;      // segundos grabados
 
         // ── Colores de avatar por rol ─────────────────────────────────
         function rolColor(rol) {
             if (rol === 'Coordinador') return '#0066ff';
-            if (rol === 'Supervisor')  return '#f59e0b';
+            if (rol === 'Supervisor') return '#f59e0b';
             return '#10b981';
         }
 
         // ── Iniciales del nombre ──────────────────────────────────────
         function initials(nombre) {
-            return (nombre || '?').split(' ').map(p => p[0]).join('').slice(0,2).toUpperCase();
+            return (nombre || '?').split(' ').map(p => p[0]).join('').slice(0, 2).toUpperCase();
         }
 
         // ── Formatear timestamp ───────────────────────────────────────
@@ -3176,9 +3543,9 @@
             const data = doc.data();
             const isMe = currentUser ? data.usuario === currentUser.usuario : (data.rol === 'Operador' && doc.id.length > 5);
             const isMyAnonMsg = !currentUser && data.rol === 'Operador';
-            const cls  = (isMe || isMyAnonMsg) ? 'mine' : 'others';
+            const cls = (isMe || isMyAnonMsg) ? 'mine' : 'others';
             const color = rolColor(data.rol);
-            const time  = formatChatTime(data.timestamp);
+            const time = formatChatTime(data.timestamp);
 
             // Imagen
             const imgHtml = data.fotoUrl
@@ -3187,7 +3554,7 @@
 
             // Texto
             const textHtml = data.texto
-                ? `<span>${data.texto.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</span>`
+                ? `<span>${data.texto.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</span>`
                 : '';
 
             // Audio con diseño dinámico para mí (mine) y otros (others)
@@ -3243,8 +3610,8 @@
 
         async function deleteChatMessage(docId) {
             if (confirm("¿Estás seguro de borrar este mensaje para todos?")) {
-                try { await db.collection('chats').doc(docId).delete(); } 
-                catch(e) { console.error(e); showToast("Error al borrar"); }
+                try { await db.collection('chats').doc(docId).delete(); }
+                catch (e) { console.error(e); showToast("Error al borrar"); }
             }
         }
 
@@ -3301,12 +3668,12 @@
 
         // ── Enviar mensaje ────────────────────────────────────────────
         async function sendChatMessage() {
-            const input   = document.getElementById('chat-message-input');
-            const texto   = input.value.trim();
+            const input = document.getElementById('chat-message-input');
+            const texto = input.value.trim();
             const hasText = texto.length > 0;
-            const hasImg  = attachedPhotoFile !== null;
+            const hasImg = attachedPhotoFile !== null;
             const hasAudio = attachedAudioBlob !== null;
-            const hasDoc   = attachedDocFile !== null;
+            const hasDoc = attachedDocFile !== null;
             if (!hasText && !hasImg && !hasAudio && !hasDoc) return;
 
             let senderId = "anon_" + Date.now();
@@ -3340,34 +3707,40 @@
                     cancelAttachedPhoto();
                 }
                 if (hasAudio) {
-                    showToast('⏳ Subiendo audio...');
-                    audioUrl = await uploadToFileIo(attachedAudioBlob, 'audio.webm');
+                    // Guardar audio como Base64 en Firestore (sin servicios externos)
+                    if (attachedAudioBlob.size > 900 * 1024) {
+                        showToast('Audio demasiado largo (máx ~60s). Graba uno más corto.');
+                        sendBtn.disabled = false;
+                        return;
+                    }
+                    showToast('⏳ Preparando audio...');
+                    audioUrl = await fileToBase64(attachedAudioBlob);
                     cancelAttachedAudio();
                 }
                 if (hasDoc) {
-                    if (attachedDocFile.size > 20 * 1024 * 1024) {
-                        showToast('El archivo es demasiado grande (máx 20 MB)');
+                    if (attachedDocFile.size > 800 * 1024) {
+                        showToast('El archivo es demasiado grande (máx 800 KB)');
                         sendBtn.disabled = false;
                         return;
                     }
                     docName = attachedDocFile.name;
-                    showToast('⏳ Subiendo documento...');
-                    docUrl = await uploadToFileIo(attachedDocFile, attachedDocFile.name);
+                    showToast('⏳ Preparando documento...');
+                    docUrl = await fileToBase64(attachedDocFile);
                     cancelAttachedDoc();
                 }
 
                 await db.collection('chats').add({
-                    texto:     texto,
-                    fotoUrl:   fotoUrl,
-                    audioUrl:  audioUrl,
-                    docUrl:    docUrl,
-                    docName:   docName,
-                    usuario:   senderId,
-                    nombre:    senderName,
-                    rol:       senderRole,
+                    texto: texto,
+                    fotoUrl: fotoUrl,
+                    audioUrl: audioUrl,
+                    docUrl: docUrl,
+                    docName: docName,
+                    usuario: senderId,
+                    nombre: senderName,
+                    rol: senderRole,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 });
-            } catch(e) {
+            } catch (e) {
                 console.error('Error enviando mensaje:', e);
                 showToast('Error: ' + (e.message || 'Error al enviar'));
             } finally {
@@ -3413,7 +3786,7 @@
                     let { width, height } = img;
                     if (width > maxPx || height > maxPx) {
                         if (width > height) { height = Math.round(height * maxPx / width); width = maxPx; }
-                        else                { width = Math.round(width * maxPx / height);  height = maxPx; }
+                        else { width = Math.round(width * maxPx / height); height = maxPx; }
                     }
                     const canvas = document.createElement('canvas');
                     canvas.width = width; canvas.height = height;
@@ -3431,7 +3804,7 @@
         function fileToBase64(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
-                reader.onload  = e => resolve(e.target.result);
+                reader.onload = e => resolve(e.target.result);
                 reader.onerror = reject;
                 reader.readAsDataURL(file);
             });
@@ -3501,7 +3874,7 @@
                     document.getElementById('chat-rec-timer').textContent = recordingSeconds + 's';
                     if (recordingSeconds >= 120) stopRecording(); // max 2 min
                 }, 1000);
-            } catch(e) {
+            } catch (e) {
                 showToast('No se pudo acceder al micrófono');
             }
         }
@@ -3514,7 +3887,7 @@
         function cancelRecording() {
             clearInterval(recordingTimer);
             if (mediaRecorder && mediaRecorder.state === 'recording') {
-                mediaRecorder.onstop = () => {}; // skip preview
+                mediaRecorder.onstop = () => { }; // skip preview
                 mediaRecorder.stop();
             }
             document.getElementById('chat-recording-indicator').style.display = 'none';
@@ -3627,7 +4000,7 @@
 
         // ── Badge de mensajes no leídos ───────────────────────────────
         function updateChatBadges(show) {
-            const ids = ['chat-badge-home','chat-badge-detail','chat-badge-register','chat-badge-reports'];
+            const ids = ['chat-badge-home', 'chat-badge-detail', 'chat-badge-register', 'chat-badge-reports'];
             ids.forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.style.display = show ? 'flex' : 'none';
@@ -3672,10 +4045,10 @@
                         console.log('FCM Token:', token);
                         // Guardar token en Firestore asociado al usuario actual
                         await db.collection('fcm_tokens').doc(currentUser.usuario).set({
-                            token:   token,
+                            token: token,
                             usuario: currentUser.usuario,
-                            nombre:  currentUser.nombre,
-                            rol:     currentUser.rol,
+                            nombre: currentUser.nombre,
+                            rol: currentUser.rol,
                             updatedAt: firebase.firestore.FieldValue.serverTimestamp()
                         });
                         showToast('✅ Notificaciones activadas correctamente');
@@ -3683,7 +4056,7 @@
                 } else {
                     showToast('Permiso de notificaciones denegado');
                 }
-            } catch(e) {
+            } catch (e) {
                 console.error('Error FCM:', e);
                 showToast('Error al activar notificaciones');
             }
@@ -3720,7 +4093,7 @@
                         currentUser.rol === "Coordinador" ? "flex" : "none";
                     showHome();
                     startChatBadgeListener();
-                } catch(e) {
+                } catch (e) {
                     console.warn("Error restaurando sesión:", e);
                     localStorage.removeItem('flotillaUser');
                 }
