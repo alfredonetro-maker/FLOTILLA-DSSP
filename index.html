@@ -1393,9 +1393,10 @@
             50% { opacity: 0.4; }
         }
     </style>
-    <!-- Firebase SDKs (Compat v10) — Storage eliminado, usamos ImgBB gratis -->
+    <!-- Firebase SDKs (Compat v10) -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-messaging-compat.js"></script>
 </head>
 
@@ -3129,6 +3130,7 @@
         };
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
+        const storage = firebase.storage();
         let messaging = null;
         try { messaging = firebase.messaging(); } catch(e) { console.warn('FCM not supported:', e); }
 
@@ -3338,19 +3340,19 @@
                     cancelAttachedPhoto();
                 }
                 if (hasAudio) {
-                    // Subir el audio al servidor temporal para evitar saturar Firestore con Base64
-                    audioUrl = await uploadToTmpFiles(attachedAudioBlob, 'audio.webm');
+                    showToast('⏳ Subiendo audio...');
+                    audioUrl = await uploadToFileIo(attachedAudioBlob, 'audio.webm');
                     cancelAttachedAudio();
                 }
                 if (hasDoc) {
-                    if (attachedDocFile.size > 15 * 1024 * 1024) {
-                        showToast('El archivo es demasiado grande (máx 15 MB)');
+                    if (attachedDocFile.size > 20 * 1024 * 1024) {
+                        showToast('El archivo es demasiado grande (máx 20 MB)');
                         sendBtn.disabled = false;
                         return;
                     }
                     docName = attachedDocFile.name;
-                    // Subir el documento al servidor temporal para evitar saturar Firestore con Base64
-                    docUrl = await uploadToTmpFiles(attachedDocFile, attachedDocFile.name);
+                    showToast('⏳ Subiendo documento...');
+                    docUrl = await uploadToFileIo(attachedDocFile, attachedDocFile.name);
                     cancelAttachedDoc();
                 }
 
@@ -3544,24 +3546,25 @@
             document.getElementById('chat-doc-preview-container').style.display = 'none';
         }
 
-        // ── Subir archivos genéricos a tmpfiles.org (CORS habilitado, soporta cualquier archivo) ──
-        async function uploadToTmpFiles(fileOrBlob, fileName) {
+        // ── Subir archivos a file.io (gratuito, sin cuenta, con expiración de 1 año y sin auto-borrado inmediato) ──
+        async function uploadToFileIo(fileOrBlob, fileName) {
+            const file = fileOrBlob instanceof File
+                ? fileOrBlob
+                : new File([fileOrBlob], fileName, { type: fileOrBlob.type || 'application/octet-stream' });
+
             const form = new FormData();
-            const file = fileOrBlob instanceof File ? fileOrBlob : new File([fileOrBlob], fileName, { type: fileOrBlob.type || 'application/octet-stream' });
             form.append('file', file);
 
-            const res = await fetch('https://api.tmpfiles.org/v1/upload', {
+            // Expiración a 1 año (?expires=1y) para que no expiren rápido
+            const res = await fetch('https://file.io/?expires=1y', {
                 method: 'POST',
                 body: form
             });
-            if (!res.ok) throw new Error('Error al subir el archivo al servidor temporal');
+
+            if (!res.ok) throw new Error('Error al subir archivo a file.io');
             const json = await res.json();
-            if (json.status !== 'success') throw new Error(json.data?.message || 'Error en servidor temporal');
-            
-            // Convertir la URL de página de tmpfiles a una URL de descarga directa
-            // Ej: https://tmpfiles.org/12345/doc.pdf -> https://tmpfiles.org/dl/12345/doc.pdf
-            const pageUrl = json.data.url;
-            return pageUrl.replace('https://tmpfiles.org/', 'https://tmpfiles.org/dl/');
+            if (!json.success) throw new Error(json.message || 'Error en respuesta de file.io');
+            return json.link; // Retorna la URL de descarga directa
         }
 
         // ── Lightbox con pinch-to-zoom ────────────────────────────────
