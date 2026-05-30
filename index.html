@@ -1388,6 +1388,10 @@
             color: #64748b;
             font-family: var(--font);
         }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
     </style>
     <!-- Firebase SDKs (Compat v10) — Storage eliminado, usamos ImgBB gratis -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
@@ -1459,9 +1463,12 @@
                         <span onclick="showToast('Póngase en contacto con su administrador.')" style="font-size: 12px; color: #64748b; text-decoration: none; font-weight: 500; cursor: pointer;">¿Olvidaste tu contraseña?</span>
                     </div>
                     
-                    <div style="text-align:center; margin-top:10px; border-top:1px solid #e2e8f0; padding-top:14px">
+                    <div style="text-align:center; margin-top:10px; border-top:1px solid #e2e8f0; padding-top:14px; display:flex; flex-direction:column; gap:8px;">
                         <button class="btn btn-ghost" onclick="showOperatorScreen()" style="font-size:12px; border-radius: 12px; height: 40px; display:flex; align-items:center; justify-content:center; gap:6px; width:100%; background:#f8fafc; border: 1px solid #e2e8f0; color: #334155; font-weight: 600; cursor: pointer;">
                             ⛽ ¿Eres Operador? Actualizar KM
+                        </button>
+                        <button class="btn btn-ghost" onclick="showChat(true)" style="font-size:12px; border-radius: 12px; height: 40px; display:flex; align-items:center; justify-content:center; gap:6px; width:100%; background:#eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; font-weight: 600; cursor: pointer;">
+                            💬 Chat de Flota (sin cuenta)
                         </button>
                     </div>
                 </div>
@@ -1997,7 +2004,7 @@
                 <!-- Messages will be injected dynamically -->
             </div>
 
-            <!-- Image preview container -->
+            <!-- Attachment previews -->
             <div id="chat-img-preview-container" class="chat-input-bar" style="display: none; border-bottom: none; padding-bottom: 0;">
                 <div class="chat-preview-box">
                     <img id="chat-preview-img" class="chat-preview-img" src="" alt="Vista previa">
@@ -2005,25 +2012,57 @@
                     <span class="chat-preview-close" onclick="cancelAttachedPhoto()">×</span>
                 </div>
             </div>
+            <div id="chat-audio-preview-container" class="chat-input-bar" style="display: none; border-bottom: none; padding-bottom: 0;">
+                <div class="chat-preview-box" style="background:#f0fdf4; border-color:#86efac;">
+                    <div style="width:36px;height:36px;border-radius:50%;background:#10b981;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                    </div>
+                    <div class="chat-preview-info" id="chat-audio-preview-label">Audio (0s)</div>
+                    <audio id="chat-audio-preview-player" controls style="height:28px;flex:1;min-width:0;"></audio>
+                    <span class="chat-preview-close" onclick="cancelAttachedAudio()">×</span>
+                </div>
+            </div>
+            <div id="chat-doc-preview-container" class="chat-input-bar" style="display: none; border-bottom: none; padding-bottom: 0;">
+                <div class="chat-preview-box" style="background:#faf5ff; border-color:#d8b4fe;">
+                    <div style="width:36px;height:36px;border-radius:50%;background:#7c3aed;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    </div>
+                    <div class="chat-preview-info" id="chat-doc-preview-label">documento.pdf</div>
+                    <span class="chat-preview-close" onclick="cancelAttachedDoc()">×</span>
+                </div>
+            </div>
 
             <!-- Message Input Area -->
             <div class="chat-input-bar">
+                <!-- Recording indicator -->
+                <div id="chat-recording-indicator" style="display:none; align-items:center; gap:8px; padding: 4px 0;">
+                    <div style="width:10px;height:10px;border-radius:50%;background:#ef4444;animation:pulse 1s infinite;"></div>
+                    <span style="font-size:12px;color:#ef4444;font-weight:600;font-family:var(--font);">Grabando... <span id="chat-rec-timer">0s</span></span>
+                    <span style="flex:1;"></span>
+                    <span onclick="cancelRecording()" style="font-size:12px;color:#64748b;cursor:pointer;font-family:var(--font);">Cancelar</span>
+                </div>
                 <div class="chat-input-row">
-                    <div class="chat-attach-btn" onclick="triggerPhotoSelect()">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-                            <circle cx="12" cy="13" r="4"></circle>
-                        </svg>
+                    <!-- Photo button -->
+                    <div class="chat-attach-btn" onclick="triggerPhotoSelect()" title="Foto">
+                        <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
                     </div>
+                    <!-- Audio button -->
+                    <div class="chat-attach-btn" id="chat-mic-btn" onclick="toggleRecording()" title="Audio" style="background:#f0fdf4; border-color:#86efac;">
+                        <svg viewBox="0 0 24 24" style="stroke:#10b981;"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                    </div>
+                    <!-- Document button -->
+                    <div class="chat-attach-btn" onclick="triggerDocSelect()" title="Documento" style="background:#faf5ff; border-color:#d8b4fe;">
+                        <svg viewBox="0 0 24 24" style="stroke:#7c3aed;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    </div>
+
+                    <!-- Hidden file inputs -->
                     <input type="file" id="chat-photo-input" accept="image/*" style="display: none;" onchange="handlePhotoSelected(event)">
-                    
+                    <input type="file" id="chat-doc-input" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.zip" style="display: none;" onchange="handleDocSelected(event)">
+
                     <input type="text" id="chat-message-input" class="chat-input-field" placeholder="Escribe un mensaje..." onkeydown="if(event.key==='Enter')sendChatMessage()">
-                    
+
                     <button class="chat-send-btn" onclick="sendChatMessage()">
-                        <svg viewBox="0 0 24 24">
-                            <line x1="22" y1="2" x2="11" y2="13"></line>
-                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                        </svg>
+                        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                     </button>
                 </div>
             </div>
@@ -3061,8 +3100,15 @@
         // ── Variables de Chat ─────────────────────────────────────────
         let chatUnsubscribe   = null;   // función para desuscribir listener de Firestore
         let attachedPhotoFile = null;   // archivo de imagen seleccionado
+        let attachedAudioBlob = null;   // blob de audio grabado
+        let attachedAudioDuration = 0; // duración del audio en segundos
+        let attachedDocFile   = null;   // archivo de documento seleccionado
         let chatLastSeenTs    = 0;      // timestamp del último mensaje visto
         let chatUnread        = 0;      // contador de mensajes no leídos
+        let mediaRecorder     = null;   // MediaRecorder para audio
+        let recordingChunks   = [];     // chunks del audio grabado
+        let recordingTimer    = null;   // intervalo del timer de grabación
+        let recordingSeconds  = 0;      // segundos grabados
 
         // ── Colores de avatar por rol ─────────────────────────────────
         function rolColor(rol) {
@@ -3087,20 +3133,38 @@
         function renderChatMsg(doc) {
             const data = doc.data();
             const isMe = currentUser ? data.usuario === currentUser.usuario : (data.rol === 'Operador' && doc.id.length > 5);
-            // Fallback for anonymous users looking at their own messages could be complex, 
-            // but for operators we'll treat all operators as somewhat similar, 
-            // though it's better to just color them based on role.
             const isMyAnonMsg = !currentUser && data.rol === 'Operador';
             const cls  = (isMe || isMyAnonMsg) ? 'mine' : 'others';
             const color = rolColor(data.rol);
             const time  = formatChatTime(data.timestamp);
+
+            // Imagen
             const imgHtml = data.fotoUrl
-                ? `<img class="chat-image" src="${data.fotoUrl}" alt="foto" onclick="openLightbox('${data.fotoUrl}')" loading="lazy">`
+                ? `<img class="chat-image" src="${data.fotoUrl}" alt="foto" onclick="openLightbox('${data.fotoUrl}')" loading="lazy" style="cursor:zoom-in;">`
                 : '';
+
+            // Texto
             const textHtml = data.texto
                 ? `<span>${data.texto.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</span>`
                 : '';
-                
+
+            // Audio
+            const audioHtml = data.audioUrl
+                ? `<div style="display:flex;align-items:center;gap:8px;background:rgba(16,185,129,0.1);padding:8px 10px;border-radius:12px;margin-top:4px;">
+                    <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#10b981;fill:none;stroke-width:2;flex-shrink:0;"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+                    <audio src="${data.audioUrl}" controls style="height:28px;flex:1;min-width:0;"></audio>
+                   </div>`
+                : '';
+
+            // Documento
+            const docHtml = data.docUrl
+                ? `<a href="${data.docUrl}" target="_blank" style="display:flex;align-items:center;gap:8px;background:rgba(124,58,237,0.08);padding:8px 10px;border-radius:12px;margin-top:4px;text-decoration:none;">
+                    <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#7c3aed;fill:none;stroke-width:2;flex-shrink:0;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <span style="font-size:12px;color:#7c3aed;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${data.docName || 'Documento'}</span>
+                   </a>`
+                : '';
+
+            // Botón borrar (solo admins)
             let deleteBtnHtml = '';
             if (currentUser && ['Coordinador', 'Supervisor'].includes(currentUser.rol)) {
                 deleteBtnHtml = `<div onclick="deleteChatMessage('${doc.id}')" style="cursor:pointer; display:flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; background:rgba(239, 68, 68, 0.1); margin-top:4px;" title="Borrar mensaje">
@@ -3116,8 +3180,7 @@
                             <strong>${(isMe || isMyAnonMsg) ? 'Tú' : data.nombre}</strong>
                             <span class="chat-role-pill">${data.rol || ''}</span>
                         </div>
-                        ${imgHtml}
-                        ${textHtml}
+                        ${imgHtml}${audioHtml}${docHtml}${textHtml}
                         <div style="display:flex; justify-content:flex-end; align-items:center; gap:8px;">
                             ${deleteBtnHtml}
                             <span class="chat-time">${time}</span>
@@ -3184,7 +3247,9 @@
             const texto   = input.value.trim();
             const hasText = texto.length > 0;
             const hasImg  = attachedPhotoFile !== null;
-            if (!hasText && !hasImg) return;
+            const hasAudio = attachedAudioBlob !== null;
+            const hasDoc   = attachedDocFile !== null;
+            if (!hasText && !hasImg && !hasAudio && !hasDoc) return;
 
             let senderId = "anon_" + Date.now();
             let senderName = "Operador";
@@ -3195,13 +3260,10 @@
                 senderName = currentUser.nombre;
                 senderRole = currentUser.rol;
             } else {
-                // Obtener unidad seleccionada si existe
                 const unitId = document.getElementById("op-step-form").dataset.unitId;
                 if (unitId && unidades && unidades.length > 0) {
                     const u = unidades.find(x => x.id === unitId);
-                    if (u) {
-                        senderName = "Operador " + u.eco;
-                    }
+                    if (u) senderName = "Operador " + u.eco;
                 }
             }
 
@@ -3211,13 +3273,30 @@
 
             try {
                 let fotoUrl = '';
+                let audioUrl = '';
+                let docUrl = '';
+                let docName = '';
+
                 if (hasImg) {
                     fotoUrl = await uploadChatPhoto(attachedPhotoFile);
                     cancelAttachedPhoto();
                 }
+                if (hasAudio) {
+                    audioUrl = await uploadToImgbb(attachedAudioBlob, 'audio.webm');
+                    cancelAttachedAudio();
+                }
+                if (hasDoc) {
+                    docName = attachedDocFile.name;
+                    docUrl = await uploadToImgbb(attachedDocFile, attachedDocFile.name);
+                    cancelAttachedDoc();
+                }
+
                 await db.collection('chats').add({
                     texto:     texto,
                     fotoUrl:   fotoUrl,
+                    audioUrl:  audioUrl,
+                    docUrl:    docUrl,
+                    docName:   docName,
                     usuario:   senderId,
                     nombre:    senderName,
                     rol:       senderRole,
@@ -3322,12 +3401,151 @@
             document.getElementById('chat-img-preview-container').style.display = 'none';
         }
 
-        // ── Lightbox ──────────────────────────────────────────────────
+        // ── Audio Recording ──────────────────────────────────────────
+        async function toggleRecording() {
+            if (mediaRecorder && mediaRecorder.state === 'recording') {
+                stopRecording();
+            } else {
+                startRecording();
+            }
+        }
+        async function startRecording() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                recordingChunks = [];
+                recordingSeconds = 0;
+                mediaRecorder = new MediaRecorder(stream);
+                mediaRecorder.ondataavailable = e => { if (e.data.size > 0) recordingChunks.push(e.data); };
+                mediaRecorder.onstop = () => {
+                    stream.getTracks().forEach(t => t.stop());
+                    attachedAudioBlob = new Blob(recordingChunks, { type: 'audio/webm' });
+                    attachedAudioDuration = recordingSeconds;
+                    const url = URL.createObjectURL(attachedAudioBlob);
+                    document.getElementById('chat-audio-preview-player').src = url;
+                    document.getElementById('chat-audio-preview-label').textContent = `Audio (${recordingSeconds}s)`;
+                    document.getElementById('chat-audio-preview-container').style.display = 'flex';
+                    document.getElementById('chat-recording-indicator').style.display = 'none';
+                    document.getElementById('chat-mic-btn').style.background = '#f0fdf4';
+                };
+                mediaRecorder.start();
+                // Timer
+                document.getElementById('chat-recording-indicator').style.display = 'flex';
+                document.getElementById('chat-mic-btn').style.background = '#fef2f2';
+                recordingTimer = setInterval(() => {
+                    recordingSeconds++;
+                    document.getElementById('chat-rec-timer').textContent = recordingSeconds + 's';
+                    if (recordingSeconds >= 120) stopRecording(); // max 2 min
+                }, 1000);
+            } catch(e) {
+                showToast('No se pudo acceder al micrófono');
+            }
+        }
+        function stopRecording() {
+            if (mediaRecorder && mediaRecorder.state === 'recording') {
+                clearInterval(recordingTimer);
+                mediaRecorder.stop();
+            }
+        }
+        function cancelRecording() {
+            clearInterval(recordingTimer);
+            if (mediaRecorder && mediaRecorder.state === 'recording') {
+                mediaRecorder.onstop = () => {}; // skip preview
+                mediaRecorder.stop();
+            }
+            document.getElementById('chat-recording-indicator').style.display = 'none';
+            document.getElementById('chat-mic-btn').style.background = '#f0fdf4';
+            recordingChunks = [];
+        }
+        function cancelAttachedAudio() {
+            attachedAudioBlob = null;
+            document.getElementById('chat-audio-preview-container').style.display = 'none';
+            const player = document.getElementById('chat-audio-preview-player');
+            player.src = '';
+        }
+
+        // ── Document attachment ───────────────────────────────────────
+        function triggerDocSelect() {
+            document.getElementById('chat-doc-input').click();
+        }
+        function handleDocSelected(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            if (file.size > 20 * 1024 * 1024) { showToast('El archivo es demasiado grande (máx 20 MB)'); return; }
+            attachedDocFile = file;
+            document.getElementById('chat-doc-preview-label').textContent = file.name;
+            document.getElementById('chat-doc-preview-container').style.display = 'flex';
+            event.target.value = '';
+        }
+        function cancelAttachedDoc() {
+            attachedDocFile = null;
+            document.getElementById('chat-doc-preview-container').style.display = 'none';
+        }
+
+        // ── Upload generic file to ImgBB (as base64) ─────────────────
+        async function uploadToImgbb(blob, fileName) {
+            const b64 = await fileToBase64(blob);
+            const b64data = b64.split(',')[1];
+            const form = new FormData();
+            form.append('key', IMGBB_API_KEY);
+            form.append('image', b64data);
+            form.append('name', fileName);
+            const res = await fetch('https://api.imgbb.com/1/upload', { method: 'POST', body: form });
+            if (!res.ok) throw new Error('Error subiendo archivo');
+            const json = await res.json();
+            if (!json.success) throw new Error(json.error?.message || 'Error ImgBB');
+            return json.data.url;
+        }
+
+        // ── Lightbox con pinch-to-zoom ────────────────────────────────
+        let lbScale = 1, lbOriginX = 0, lbOriginY = 0;
+        let lbLastDist = 0, lbIsPinching = false;
+        let lbLastTap = 0;
+
         function openLightbox(url) {
             const lb = document.getElementById('chat-lightbox');
-            document.getElementById('chat-lightbox-img').src = url;
+            const img = document.getElementById('chat-lightbox-img');
+            img.src = url;
+            img.style.transform = 'scale(1)';
+            img.style.transformOrigin = 'center center';
+            img.style.transition = 'transform 0.2s';
+            lbScale = 1;
             lb.style.display = 'flex';
             requestAnimationFrame(() => lb.classList.add('active'));
+
+            // Pinch-to-zoom
+            lb.ontouchmove = (e) => {
+                if (e.touches.length === 2) {
+                    e.preventDefault();
+                    const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+                    if (lbLastDist > 0) {
+                        lbScale = Math.min(5, Math.max(1, lbScale * (dist / lbLastDist)));
+                        img.style.transition = 'none';
+                        img.style.transform = `scale(${lbScale})`;
+                    }
+                    lbLastDist = dist;
+                    lbIsPinching = true;
+                }
+            };
+            lb.ontouchstart = (e) => {
+                if (e.touches.length === 2) { lbLastDist = 0; lbIsPinching = true; }
+                // Double-tap to zoom/reset
+                if (e.touches.length === 1) {
+                    const now = Date.now();
+                    if (now - lbLastTap < 300) {
+                        lbScale = lbScale > 1 ? 1 : 2.5;
+                        img.style.transition = 'transform 0.3s';
+                        img.style.transform = `scale(${lbScale})`;
+                    }
+                    lbLastTap = now;
+                }
+            };
+            lb.ontouchend = () => { lbLastDist = 0; lbIsPinching = false; };
+            // Scroll wheel zoom (desktop)
+            lb.onwheel = (e) => {
+                e.preventDefault();
+                lbScale = Math.min(5, Math.max(1, lbScale - e.deltaY * 0.005));
+                img.style.transform = `scale(${lbScale})`;
+            };
         }
 
         function closeLightbox() {
