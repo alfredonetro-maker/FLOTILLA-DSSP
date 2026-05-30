@@ -1551,16 +1551,43 @@
 
         <!-- HOME -->
         <div id="s-home" class="screen">
-            <div class="topbar">
-                <svg style="width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"
-                    viewBox="0 0 24 24">
-                    <rect x="1" y="3" width="15" height="13" rx="2" />
-                    <path d="M16 8h4l3 3v5h-7V8z" />
-                    <circle cx="5.5" cy="18.5" r="2.5" />
-                    <circle cx="18.5" cy="18.5" r="2.5" />
-                </svg>
-                <h1>Unidades</h1>
-                <span class="role-pill" id="role-label">—</span>
+            <div class="topbar" style="background:#ffffff; border-bottom:1px solid #e2e8f0; padding: 48px 16px 14px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <!-- Menu Icon -->
+                    <div onclick="openSidebar()" style="cursor:pointer; display:flex; align-items:center; padding: 4px; width:32px; height:32px; justify-content:center; border-radius:8px; transition:background 0.15s;" onmousedown="this.style.background='#f1f5f9'" onmouseup="this.style.background='transparent'">
+                        <svg viewBox="0 0 24 24" style="width:20px; height:20px; stroke:#475569; fill:none; stroke-width:2.5; stroke-linecap:round;"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </div>
+                    
+                    <!-- Blue square truck icon -->
+                    <div style="width:36px; height:36px; border-radius:8px; background:#0066ff; display:flex; align-items:center; justify-content:center;">
+                        <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:#ffffff; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;">
+                            <rect x="1" y="3" width="15" height="13" rx="2" />
+                            <path d="M16 8h4l3 3v5h-7V8z" />
+                            <circle cx="5.5" cy="18.5" r="2.5" />
+                            <circle cx="18.5" cy="18.5" r="2.5" />
+                        </svg>
+                    </div>
+                    
+                    <div>
+                        <h1 style="font-size:18px; font-weight:700; color:#0f172a; margin:0; line-height:1.2; font-family:var(--font);">Inicio</h1>
+                        <span style="font-size:11px; color:#64748b; font-weight:500; font-family:var(--font);">Gestión de flota</span>
+                    </div>
+                </div>
+                
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <!-- Bell icon with badge -->
+                    <div onclick="openNotifPanel()" style="position:relative; cursor:pointer; width:34px; height:34px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; transition:background 0.15s;" onmousedown="this.style.background='#e2e8f0'" onmouseup="this.style.background='#f1f5f9'">
+                        <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:#475569; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                        <span id="home-bell-badge" style="position:absolute; top:-2px; right:-2px; background:#0066ff; color:#ffffff; font-size:9px; font-weight:700; width:15px; height:15px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #ffffff;">0</span>
+                    </div>
+                    
+                    <!-- User dropdown pill -->
+                    <div onclick="openUserDropdown()" style="display:flex; align-items:center; gap:6px; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:20px; padding:4px 10px; cursor:pointer; transition:background 0.15s;" onmousedown="this.style.background='#e2e8f0'" onmouseup="this.style.background='#f1f5f9'">
+                        <svg viewBox="0 0 24 24" style="width:14px; height:14px; fill:none; stroke:#64748b; stroke-width:2.5;"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <span id="role-label" style="font-size:11px; font-weight:600; color:#334155; max-width:80px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-family:var(--font);">—</span>
+                        <svg viewBox="0 0 24 24" style="width:10px; height:10px; fill:none; stroke:#64748b; stroke-width:3; stroke-linecap:round;"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </div>
             </div>
             <!-- Stats strip -->
             <div style="padding: 12px 16px 8px; background: var(--bg); border-bottom: 1px solid var(--border); flex-shrink: 0;">
@@ -2355,6 +2382,16 @@
                     }
                 });
                 renderUnidades();
+
+                // Actualizar los contadores de notificaciones (campana) en Inicio y Reportes
+                const urgentes = unidades.filter(u => u.alerta === "URGENTE");
+                const proximos = unidades.filter(u => u.alerta === "PROXIMO");
+                const alertsCount = urgentes.length + proximos.length;
+
+                const badgeHome = document.getElementById("home-bell-badge");
+                const badgeRep = document.getElementById("rep-bell-badge");
+                if (badgeHome) badgeHome.textContent = alertsCount;
+                if (badgeRep) badgeRep.textContent = alertsCount;
             } catch (e) { showToast("Error al cargar unidades"); }
             loading(false);
         }
@@ -2608,7 +2645,10 @@
                 
                 // Dynamic notification bell badge
                 const alertsCount = urgentes.length + proximos.length;
-                document.getElementById("rep-bell-badge").textContent = alertsCount;
+                const badgeHome = document.getElementById("home-bell-badge");
+                const badgeRep = document.getElementById("rep-bell-badge");
+                if (badgeHome) badgeHome.textContent = alertsCount;
+                if (badgeRep) badgeRep.textContent = alertsCount;
 
                 // Sort units: URGENTE first, then PROXIMO, then AL_DIA, then SIN_KM
                 const sortedUnidades = [...unidades].sort((a, b) => {
