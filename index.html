@@ -3158,7 +3158,7 @@
 
             // Documento
             const docHtml = data.docUrl
-                ? `<a href="${data.docUrl}" download="${data.docName || 'Documento'}" style="display:flex;align-items:center;gap:8px;background:rgba(124,58,237,0.08);padding:8px 10px;border-radius:12px;margin-top:4px;text-decoration:none;">
+                ? `<a href="${data.docUrl}" download="${data.docName || 'Documento'}" target="_blank" style="display:flex;align-items:center;gap:8px;background:rgba(124,58,237,0.08);padding:8px 10px;border-radius:12px;margin-top:4px;text-decoration:none;">
                     <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#7c3aed;fill:none;stroke-width:2;flex-shrink:0;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                     <span style="font-size:12px;color:#7c3aed;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${data.docName || 'Documento'}</span>
                    </a>`
@@ -3288,19 +3288,19 @@
                     cancelAttachedPhoto();
                 }
                 if (hasAudio) {
-                    // Guardar audio directamente en base64 para evitar limitaciones de ImgBB
-                    audioUrl = await fileToBase64(attachedAudioBlob);
+                    // Subir el audio al servidor temporal para evitar saturar Firestore con Base64
+                    audioUrl = await uploadToTmpFiles(attachedAudioBlob, 'audio.webm');
                     cancelAttachedAudio();
                 }
                 if (hasDoc) {
-                    if (attachedDocFile.size > 750 * 1024) {
-                        showToast('El archivo es demasiado grande (máx 750 KB)');
+                    if (attachedDocFile.size > 15 * 1024 * 1024) {
+                        showToast('El archivo es demasiado grande (máx 15 MB)');
                         sendBtn.disabled = false;
                         return;
                     }
                     docName = attachedDocFile.name;
-                    // Guardar documento directamente en base64 para evitar limitaciones de ImgBB
-                    docUrl = await fileToBase64(attachedDocFile);
+                    // Subir el documento al servidor temporal para evitar saturar Firestore con Base64
+                    docUrl = await uploadToTmpFiles(attachedDocFile, attachedDocFile.name);
                     cancelAttachedDoc();
                 }
 
@@ -3494,19 +3494,24 @@
             document.getElementById('chat-doc-preview-container').style.display = 'none';
         }
 
-        // ── Upload generic file to ImgBB (as base64) ─────────────────
-        async function uploadToImgbb(blob, fileName) {
-            const b64 = await fileToBase64(blob);
-            const b64data = b64.split(',')[1];
+        // ── Subir archivos genéricos a tmpfiles.org (CORS habilitado, soporta cualquier archivo) ──
+        async function uploadToTmpFiles(fileOrBlob, fileName) {
             const form = new FormData();
-            form.append('key', IMGBB_API_KEY);
-            form.append('image', b64data);
-            form.append('name', fileName);
-            const res = await fetch('https://api.imgbb.com/1/upload', { method: 'POST', body: form });
-            if (!res.ok) throw new Error('Error subiendo archivo');
+            const file = fileOrBlob instanceof File ? fileOrBlob : new File([fileOrBlob], fileName, { type: fileOrBlob.type || 'application/octet-stream' });
+            form.append('file', file);
+
+            const res = await fetch('https://api.tmpfiles.org/v1/upload', {
+                method: 'POST',
+                body: form
+            });
+            if (!res.ok) throw new Error('Error al subir el archivo al servidor temporal');
             const json = await res.json();
-            if (!json.success) throw new Error(json.error?.message || 'Error ImgBB');
-            return json.data.url;
+            if (json.status !== 'success') throw new Error(json.data?.message || 'Error en servidor temporal');
+            
+            // Convertir la URL de página de tmpfiles a una URL de descarga directa
+            // Ej: https://tmpfiles.org/12345/doc.pdf -> https://tmpfiles.org/dl/12345/doc.pdf
+            const pageUrl = json.data.url;
+            return pageUrl.replace('https://tmpfiles.org/', 'https://tmpfiles.org/dl/');
         }
 
         // ── Lightbox con pinch-to-zoom ────────────────────────────────
