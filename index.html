@@ -767,7 +767,371 @@
             background: rgba(46, 204, 138, 0.12);
             color: var(--green);
         }
+
+        /* ── Pantalla de Chat (`#s-chat`) ── */
+        #s-chat {
+            background: var(--bg);
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .chat-banner-push {
+            background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
+            color: #ffffff;
+            padding: 10px 14px;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0, 102, 255, 0.15);
+        }
+
+        .chat-banner-push button {
+            background: #ffffff;
+            color: #0066ff;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .chat-banner-push button:active {
+            transform: scale(0.95);
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: #f8fafc;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .chat-messages::-webkit-scrollbar {
+            display: none;
+        }
+
+        .chat-msg-wrap {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            max-width: 85%;
+            margin-bottom: 4px;
+        }
+
+        .chat-msg-wrap.mine {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .chat-msg-wrap.others {
+            align-self: flex-start;
+        }
+
+        .chat-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: #ffffff;
+            flex-shrink: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .chat-bubble {
+            padding: 10px 14px;
+            border-radius: 16px;
+            font-size: 13.5px;
+            line-height: 1.4;
+            position: relative;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            word-break: break-word;
+        }
+
+        .chat-msg-wrap.mine .chat-bubble {
+            background: #0066ff;
+            color: #ffffff;
+            border-top-right-radius: 4px;
+        }
+
+        .chat-msg-wrap.others .chat-bubble {
+            background: #ffffff;
+            color: var(--text);
+            border-top-left-radius: 4px;
+            border: 1px solid var(--border);
+        }
+
+        .chat-meta {
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 2px;
+        }
+
+        .chat-msg-wrap.mine .chat-meta {
+            justify-content: flex-end;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .chat-msg-wrap.others .chat-meta {
+            color: var(--muted);
+        }
+
+        .chat-time {
+            font-size: 9px;
+            align-self: flex-end;
+            margin-top: 2px;
+            opacity: 0.8;
+            font-family: var(--mono);
+        }
+
+        .chat-msg-wrap.mine .chat-time {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .chat-msg-wrap.others .chat-time {
+            color: var(--muted);
+        }
+
+        .chat-role-pill {
+            font-size: 9px;
+            font-family: var(--mono);
+            padding: 2px 6px;
+            border-radius: 10px;
+            background: var(--bg3);
+            color: var(--muted);
+            border: 1px solid var(--border);
+            font-weight: 500;
+        }
+
+        .chat-msg-wrap.mine .chat-role-pill {
+            background: rgba(255,255,255,0.2);
+            color: #ffffff;
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .chat-image {
+            max-width: 100%;
+            border-radius: 12px;
+            margin-top: 4px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: block;
+            max-height: 180px;
+            object-fit: cover;
+        }
+
+        .chat-image:active {
+            transform: scale(0.98);
+        }
+
+        /* ── Input bar ── */
+        .chat-input-bar {
+            background: #ffffff;
+            border-top: 1px solid var(--border);
+            padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-shrink: 0;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.02);
+        }
+
+        .chat-input-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-attach-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .chat-attach-btn:active {
+            background: var(--border);
+            transform: scale(0.95);
+        }
+
+        .chat-attach-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .chat-input-field {
+            flex: 1;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 10px 16px;
+            font-size: 14px;
+            color: var(--text);
+            outline: none;
+            height: 40px;
+            font-family: var(--font);
+            transition: border-color 0.2s;
+        }
+
+        .chat-input-field:focus {
+            border-color: var(--accent);
+            background: #ffffff;
+        }
+
+        .chat-send-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #ffffff;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0, 102, 255, 0.2);
+        }
+
+        .chat-send-btn:active {
+            transform: scale(0.92);
+            opacity: 0.9;
+        }
+
+        .chat-send-btn svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transform: rotate(0deg);
+        }
+
+        /* ── Previsualización de imagen adjunta ── */
+        .chat-preview-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 12px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .chat-preview-img {
+            width: 36px;
+            height: 36px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .chat-preview-info {
+            flex: 1;
+            font-size: 11px;
+            color: var(--muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chat-preview-close {
+            color: var(--red);
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 0 4px;
+        }
+
+        /* ── Lightbox para pantalla completa ── */
+        .chat-lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1100;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .chat-lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .chat-lightbox img {
+            max-width: 92%;
+            max-height: 80%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            object-fit: contain;
+        }
+
+        .chat-lightbox-close {
+            position: absolute;
+            top: 40px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: background 0.2s;
+        }
+
+        .chat-lightbox-close:hover {
+            background: rgba(255,255,255,0.2);
+        }
     </style>
+    <!-- Firebase SDKs (Compat v10) — Storage eliminado, usamos ImgBB gratis -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-messaging-compat.js"></script>
 </head>
 
 <body>
@@ -950,7 +1314,11 @@
                         <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
                         <polyline points="9 22 9 12 15 12 15 22" />
                     </svg>Inicio</button>
-                <!-- Botón Registrar eliminado -->
+                <button class="nav-btn" onclick="showChat()" style="position:relative;"><svg viewBox="0 0 24 24">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span id="chat-badge-home" style="display:none;position:absolute;top:6px;right:calc(50% - 18px);background:#ef4444;color:#fff;font-size:9px;font-weight:700;width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #fff;">!</span>
+                    Chat</button>
                 <button class="nav-btn" onclick="showReports()"><svg viewBox="0 0 24 24">
                         <line x1="18" y1="20" x2="18" y2="10" />
                         <line x1="12" y1="20" x2="12" y2="4" />
@@ -1011,11 +1379,11 @@
                         <line x1="12" y1="16" x2="12" y2="12" />
                         <line x1="12" y1="8" x2="12.01" y2="8" />
                     </svg>Detalle</button>
-                <button class="nav-btn" onclick="showReports()"><svg viewBox="0 0 24 24">
-                        <line x1="18" y1="20" x2="18" y2="10" />
-                        <line x1="12" y1="20" x2="12" y2="4" />
-                        <line x1="6" y1="20" x2="6" y2="14" />
-                    </svg>Reportes</button>
+                <button class="nav-btn" onclick="showChat()" style="position:relative;"><svg viewBox="0 0 24 24">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span id="chat-badge-detail" style="display:none;position:absolute;top:6px;right:calc(50% - 18px);background:#ef4444;color:#fff;font-size:9px;font-weight:700;width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #fff;">!</span>
+                    Chat</button>
                 <button class="nav-btn" onclick="logout()"><svg viewBox="0 0 24 24">
                         <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
                         <polyline points="16 17 21 12 16 7" />
@@ -1088,11 +1456,11 @@
                         <line x1="12" y1="8" x2="12" y2="16" />
                         <line x1="8" y1="12" x2="16" y2="12" />
                     </svg>Registrar</button>
-                <button class="nav-btn" onclick="showReports()"><svg viewBox="0 0 24 24">
-                        <line x1="18" y1="20" x2="18" y2="10" />
-                        <line x1="12" y1="20" x2="12" y2="4" />
-                        <line x1="6" y1="20" x2="6" y2="14" />
-                    </svg>Reportes</button>
+                <button class="nav-btn" onclick="showChat()" style="position:relative;"><svg viewBox="0 0 24 24">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span id="chat-badge-register" style="display:none;position:absolute;top:6px;right:calc(50% - 18px);background:#ef4444;color:#fff;font-size:9px;font-weight:700;width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #fff;">!</span>
+                    Chat</button>
                 <button class="nav-btn" onclick="logout()"><svg viewBox="0 0 24 24">
                         <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
                         <polyline points="16 17 21 12 16 7" />
@@ -1243,7 +1611,95 @@
                         <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
                         <polyline points="9 22 9 12 15 12 15 22" />
                     </svg>Inicio</button>
+                <button class="nav-btn" onclick="showChat()" style="position:relative;"><svg viewBox="0 0 24 24">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span id="chat-badge-reports" style="display:none;position:absolute;top:6px;right:calc(50% - 18px);background:#ef4444;color:#fff;font-size:9px;font-weight:700;width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #fff;">!</span>
+                    Chat</button>
                 <button class="nav-btn active"><svg viewBox="0 0 24 24">
+                        <line x1="18" y1="20" x2="18" y2="10" />
+                        <line x1="12" y1="20" x2="12" y2="4" />
+                        <line x1="6" y1="20" x2="6" y2="14" />
+                    </svg>Reportes</button>
+                <button class="nav-btn" onclick="logout()"><svg viewBox="0 0 24 24">
+                        <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" y1="12" x2="9" y2="12" />
+                    </svg>Salir</button>
+            </div>
+        </div>
+
+        <!-- CHAT -->
+        <div id="s-chat" class="screen">
+            <div class="topbar" style="background:#ffffff; border-bottom:1px solid #e2e8f0; padding: 48px 16px 14px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <div style="width:36px; height:36px; border-radius:8px; background:#0066ff; display:flex; align-items:center; justify-content:center;">
+                        <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:#ffffff; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 style="font-size:18px; font-weight:700; color:#0f172a; margin:0; line-height:1.2; font-family:var(--font);">Chat de Flota</h1>
+                        <span style="font-size:11px; color:#64748b; font-weight:500; font-family:var(--font);">Comunicación activa</span>
+                    </div>
+                </div>
+                <span class="role-pill" id="chat-count-label">Conectado</span>
+            </div>
+
+            <!-- Push Notifications Request Banner -->
+            <div id="chat-push-banner" class="chat-banner-push" style="display: none;">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <span>🔔 Recibe alertas de nuevos mensajes de flota</span>
+                </div>
+                <button onclick="requestPushPermission()">Activar</button>
+            </div>
+
+            <!-- Messages List -->
+            <div id="chat-messages-container" class="chat-messages">
+                <!-- Messages will be injected dynamically -->
+            </div>
+
+            <!-- Image preview container -->
+            <div id="chat-img-preview-container" class="chat-input-bar" style="display: none; border-bottom: none; padding-bottom: 0;">
+                <div class="chat-preview-box">
+                    <img id="chat-preview-img" class="chat-preview-img" src="" alt="Vista previa">
+                    <div id="chat-preview-filename" class="chat-preview-info">foto.jpg</div>
+                    <span class="chat-preview-close" onclick="cancelAttachedPhoto()">×</span>
+                </div>
+            </div>
+
+            <!-- Message Input Area -->
+            <div class="chat-input-bar">
+                <div class="chat-input-row">
+                    <div class="chat-attach-btn" onclick="triggerPhotoSelect()">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                            <circle cx="12" cy="13" r="4"></circle>
+                        </svg>
+                    </div>
+                    <input type="file" id="chat-photo-input" accept="image/*" style="display: none;" onchange="handlePhotoSelected(event)">
+                    
+                    <input type="text" id="chat-message-input" class="chat-input-field" placeholder="Escribe un mensaje..." onkeydown="if(event.key==='Enter')sendChatMessage()">
+                    
+                    <button class="chat-send-btn" onclick="sendChatMessage()">
+                        <svg viewBox="0 0 24 24">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation bar -->
+            <div class="nav">
+                <button class="nav-btn" onclick="showHome()"><svg viewBox="0 0 24 24">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>Inicio</button>
+                <button class="nav-btn active"><svg viewBox="0 0 24 24">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>Chat</button>
+                <button class="nav-btn" onclick="showReports()"><svg viewBox="0 0 24 24">
                         <line x1="18" y1="20" x2="18" y2="10" />
                         <line x1="12" y1="20" x2="12" y2="4" />
                         <line x1="6" y1="20" x2="6" y2="14" />
@@ -1398,6 +1854,8 @@
                     document.getElementById("coord-settings").style.display =
                         res.rol === "Coordinador" ? "flex" : "none";
                     await showHome();
+                    // Arrancar el listener de badge del chat en tiempo real
+                    if (typeof startChatBadgeListener === 'function') startChatBadgeListener();
                 } else {
                     errEl.textContent = res.error || "Usuario o clave incorrectos";
                 }
@@ -2156,18 +2614,364 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js').then(() => console.log('PWA: Ready'));
+                // Also register the Firebase messaging service worker
+                navigator.serviceWorker.register('firebase-messaging-sw.js')
+                    .then(reg => console.log('FCM SW: Ready', reg))
+                    .catch(err => console.warn('FCM SW registration failed:', err));
             });
-            // Recargar automáticamente la página cuando un nuevo service worker tome el control
             let refreshing = false;
             navigator.serviceWorker.addEventListener('controllerchange', () => {
-                if (!refreshing) {
-                    refreshing = true;
-                    window.location.reload();
-                }
+                if (!refreshing) { refreshing = true; window.location.reload(); }
             });
         }
         loading(false);
+
+        // ══════════════════════════════════════════════════════════════
+        // ── FIREBASE: Inicialización ──────────────────────────────────
+        // ══════════════════════════════════════════════════════════════
+        const firebaseConfig = {
+            apiKey: "AIzaSyBpndJT2kwY2ixrPxLjmzmVjbTo4gw60o8",
+            authDomain: "flotilla-c18a3.firebaseapp.com",
+            projectId: "flotilla-c18a3",
+            storageBucket: "flotilla-c18a3.firebasestorage.app",
+            messagingSenderId: "819346593147",
+            appId: "1:819346593147:web:6781408a7a37bd60e519de",
+            measurementId: "G-HY32S0HD1H"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        let messaging = null;
+        try { messaging = firebase.messaging(); } catch(e) { console.warn('FCM not supported:', e); }
+
+        // ── ImgBB — API gratuita para subir fotos ─────────────────────────────
+        // Obtén tu API key gratis en https://imgbb.com/
+        // Regístrate, ve a "About" > "API" > "Get API key"
+        const IMGBB_API_KEY = 'TU_API_KEY_AQUI'; // ⚠️ Reemplaza con tu clave de ImgBB
+
+        // ── Variables de Chat ─────────────────────────────────────────
+        let chatUnsubscribe   = null;   // función para desuscribir listener de Firestore
+        let attachedPhotoFile = null;   // archivo de imagen seleccionado
+        let chatLastSeenTs    = 0;      // timestamp del último mensaje visto
+        let chatUnread        = 0;      // contador de mensajes no leídos
+
+        // ── Colores de avatar por rol ─────────────────────────────────
+        function rolColor(rol) {
+            if (rol === 'Coordinador') return '#0066ff';
+            if (rol === 'Supervisor')  return '#f59e0b';
+            return '#10b981';
+        }
+
+        // ── Iniciales del nombre ──────────────────────────────────────
+        function initials(nombre) {
+            return (nombre || '?').split(' ').map(p => p[0]).join('').slice(0,2).toUpperCase();
+        }
+
+        // ── Formatear timestamp ───────────────────────────────────────
+        function formatChatTime(ts) {
+            if (!ts) return '';
+            const d = ts.toDate ? ts.toDate() : new Date(ts);
+            return d.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        // ── Renderizar un mensaje ─────────────────────────────────────
+        function renderChatMsg(doc) {
+            const data = doc.data();
+            const isMe = currentUser && data.usuario === currentUser.usuario;
+            const cls  = isMe ? 'mine' : 'others';
+            const color = rolColor(data.rol);
+            const time  = formatChatTime(data.timestamp);
+            const imgHtml = data.fotoUrl
+                ? `<img class="chat-image" src="${data.fotoUrl}" alt="foto" onclick="openLightbox('${data.fotoUrl}')" loading="lazy">`
+                : '';
+            const textHtml = data.texto
+                ? `<span>${data.texto.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</span>`
+                : '';
+            return `
+                <div class="chat-msg-wrap ${cls}" data-id="${doc.id}">
+                    <div class="chat-avatar" style="background:${color};">${initials(data.nombre)}</div>
+                    <div class="chat-bubble">
+                        <div class="chat-meta">
+                            <strong>${isMe ? 'Tú' : data.nombre}</strong>
+                            <span class="chat-role-pill">${data.rol || ''}</span>
+                        </div>
+                        ${imgHtml}
+                        ${textHtml}
+                        <span class="chat-time">${time}</span>
+                    </div>
+                </div>`;
+        }
+
+        // ── Mostrar pantalla de Chat ──────────────────────────────────
+        async function showChat() {
+            if (!currentUser) { showToast('Inicia sesión primero'); return; }
+            show('s-chat');
+            chatUnread = 0;
+            updateChatBadges(false);
+
+            // Mostrar banner push si aún no hay permiso
+            const pushBanner = document.getElementById('chat-push-banner');
+            if (Notification.permission === 'default') {
+                pushBanner.style.display = 'flex';
+            } else {
+                pushBanner.style.display = 'none';
+            }
+
+            // Suscribirse al stream de mensajes en tiempo real
+            if (chatUnsubscribe) chatUnsubscribe();
+            const container = document.getElementById('chat-messages-container');
+            container.innerHTML = `<div style="text-align:center;padding:40px 20px;color:var(--muted);font-size:13px;">Cargando mensajes...</div>`;
+
+            chatUnsubscribe = db.collection('chats')
+                .orderBy('timestamp', 'asc')
+                .limitToLast(80)
+                .onSnapshot(snapshot => {
+                    if (snapshot.empty) {
+                        container.innerHTML = `<div style="text-align:center;padding:40px 20px;color:var(--muted);font-size:13px;">Sin mensajes aún. ¡Sé el primero!</div>`;
+                        return;
+                    }
+                    container.innerHTML = snapshot.docs.map(renderChatMsg).join('');
+                    container.scrollTop = container.scrollHeight;
+                }, err => {
+                    console.error('Chat snapshot error:', err);
+                    container.innerHTML = `<div style="text-align:center;padding:20px;color:var(--red);font-size:12px;">Error al cargar mensajes</div>`;
+                });
+        }
+
+        // ── Enviar mensaje ────────────────────────────────────────────
+        async function sendChatMessage() {
+            if (!currentUser) return;
+            const input   = document.getElementById('chat-message-input');
+            const texto   = input.value.trim();
+            const hasText = texto.length > 0;
+            const hasImg  = attachedPhotoFile !== null;
+            if (!hasText && !hasImg) return;
+
+            const sendBtn = document.querySelector('.chat-send-btn');
+            sendBtn.disabled = true;
+            input.value = '';
+
+            try {
+                let fotoUrl = '';
+                if (hasImg) {
+                    fotoUrl = await uploadChatPhoto(attachedPhotoFile);
+                    cancelAttachedPhoto();
+                }
+                await db.collection('chats').add({
+                    texto:     texto,
+                    fotoUrl:   fotoUrl,
+                    usuario:   currentUser.usuario,
+                    nombre:    currentUser.nombre,
+                    rol:       currentUser.rol,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            } catch(e) {
+                console.error('Error enviando mensaje:', e);
+                showToast('Error al enviar el mensaje');
+            } finally {
+                sendBtn.disabled = false;
+                input.focus();
+            }
+        }
+
+        // ── Subir foto a ImgBB (gratis, sin límite) ──────────────────────
+        async function uploadChatPhoto(file) {
+            // Comprimir imagen antes de subir (máx 1200px, calidad 0.80)
+            const compressed = await compressImage(file, 1200, 0.80);
+
+            // Convertir a base64 para enviar a ImgBB
+            const base64 = await fileToBase64(compressed);
+            const base64Data = base64.split(',')[1]; // quitar el prefijo data:image/...;base64,
+
+            if (!IMGBB_API_KEY || IMGBB_API_KEY === 'TU_API_KEY_AQUI') {
+                throw new Error('Configura tu API key de ImgBB en el código');
+            }
+
+            const form = new FormData();
+            form.append('key', IMGBB_API_KEY);
+            form.append('image', base64Data);
+
+            const res = await fetch('https://api.imgbb.com/1/upload', {
+                method: 'POST',
+                body: form
+            });
+            if (!res.ok) throw new Error('Error al subir imagen a ImgBB');
+            const json = await res.json();
+            if (!json.success) throw new Error(json.error?.message || 'Error ImgBB');
+            return json.data.url; // URL pública permanente
+        }
+
+        // Comprimir imagen con canvas (sin librerías externas)
+        function compressImage(file, maxPx, quality) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                const url = URL.createObjectURL(file);
+                img.onload = () => {
+                    URL.revokeObjectURL(url);
+                    let { width, height } = img;
+                    if (width > maxPx || height > maxPx) {
+                        if (width > height) { height = Math.round(height * maxPx / width); width = maxPx; }
+                        else                { width = Math.round(width * maxPx / height);  height = maxPx; }
+                    }
+                    const canvas = document.createElement('canvas');
+                    canvas.width = width; canvas.height = height;
+                    canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+                    canvas.toBlob(blob => {
+                        resolve(blob || file);
+                    }, 'image/jpeg', quality);
+                };
+                img.onerror = () => resolve(file); // fallback sin compresión
+                img.src = url;
+            });
+        }
+
+        // Leer archivo como base64
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload  = e => resolve(e.target.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // ── Adjuntar foto ─────────────────────────────────────────────
+        function triggerPhotoSelect() {
+            document.getElementById('chat-photo-input').click();
+        }
+
+        function handlePhotoSelected(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            if (!file.type.startsWith('image/')) { showToast('Solo se permiten imágenes'); return; }
+            if (file.size > 10 * 1024 * 1024) { showToast('La imagen es demasiado grande (máx 10 MB)'); return; }
+
+            attachedPhotoFile = file;
+            const reader = new FileReader();
+            reader.onload = e => {
+                document.getElementById('chat-preview-img').src = e.target.result;
+                document.getElementById('chat-preview-filename').textContent = file.name;
+                document.getElementById('chat-img-preview-container').style.display = 'flex';
+            };
+            reader.readAsDataURL(file);
+            // Reset input so same file can be re-selected
+            event.target.value = '';
+        }
+
+        function cancelAttachedPhoto() {
+            attachedPhotoFile = null;
+            document.getElementById('chat-preview-img').src = '';
+            document.getElementById('chat-img-preview-container').style.display = 'none';
+        }
+
+        // ── Lightbox ──────────────────────────────────────────────────
+        function openLightbox(url) {
+            const lb = document.getElementById('chat-lightbox');
+            document.getElementById('chat-lightbox-img').src = url;
+            lb.style.display = 'flex';
+            requestAnimationFrame(() => lb.classList.add('active'));
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('chat-lightbox');
+            lb.classList.remove('active');
+            setTimeout(() => { lb.style.display = 'none'; }, 250);
+        }
+
+        // ── Badge de mensajes no leídos ───────────────────────────────
+        function updateChatBadges(show) {
+            const ids = ['chat-badge-home','chat-badge-detail','chat-badge-register','chat-badge-reports'];
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.display = show ? 'flex' : 'none';
+            });
+        }
+
+        // Escuchar mensajes en segundo plano para mostrar el badge
+        function startChatBadgeListener() {
+            if (!currentUser) return;
+            db.collection('chats')
+                .orderBy('timestamp', 'desc')
+                .limit(1)
+                .onSnapshot(snap => {
+                    if (snap.empty) return;
+                    const latest = snap.docs[0].data();
+                    if (!latest.timestamp) return;
+                    const latestMs = latest.timestamp.toMillis ? latest.timestamp.toMillis() : 0;
+                    // Si el mensaje más reciente es de otro y es nuevo, mostrar badge
+                    if (latest.usuario !== currentUser.usuario && latestMs > chatLastSeenTs) {
+                        // Solo mostrar badge si el chat no está abierto
+                        const chatOpen = document.getElementById('s-chat').classList.contains('active');
+                        if (!chatOpen) {
+                            chatLastSeenTs = latestMs;
+                            updateChatBadges(true);
+                        }
+                    }
+                });
+        }
+
+        // ── Notificaciones Push (FCM) ─────────────────────────────────
+        async function requestPushPermission() {
+            if (!messaging) { showToast('Notificaciones no soportadas en este navegador'); return; }
+            try {
+                const permission = await Notification.requestPermission();
+                if (permission === 'granted') {
+                    document.getElementById('chat-push-banner').style.display = 'none';
+                    // VAPID key pública — debes reemplazarla con la tuya de Firebase Console
+                    // Ve a Firebase Console > Project Settings > Cloud Messaging > Web Push certificates
+                    const VAPID_KEY = 'BEl62iUYgUivxIkv69yViEuiBIa-Ib9-SkvMeAtA3LFgDkBWDTXur-XQ3Rv87OiEuDjuJJSWz3UoVBQrSw_iUUA';
+                    const token = await messaging.getToken({ vapidKey: VAPID_KEY });
+                    if (token) {
+                        console.log('FCM Token:', token);
+                        // Guardar token en Firestore asociado al usuario actual
+                        await db.collection('fcm_tokens').doc(currentUser.usuario).set({
+                            token:   token,
+                            usuario: currentUser.usuario,
+                            nombre:  currentUser.nombre,
+                            rol:     currentUser.rol,
+                            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                        });
+                        showToast('✅ Notificaciones activadas correctamente');
+                    }
+                } else {
+                    showToast('Permiso de notificaciones denegado');
+                }
+            } catch(e) {
+                console.error('Error FCM:', e);
+                showToast('Error al activar notificaciones');
+            }
+        }
+
+        // Escuchar notificaciones cuando la app está en primer plano
+        if (messaging) {
+            messaging.onMessage(payload => {
+                console.log('FCM foreground message:', payload);
+                const { title, body } = payload.notification || {};
+                showToast(`💬 ${title || 'Nuevo mensaje'}: ${body || ''}`);
+                // Si el chat está abierto, simplemente el snapshot listener ya lo actualizará
+                // Si no está abierto, mostrar el badge
+                const chatOpen = document.getElementById('s-chat').classList.contains('active');
+                if (!chatOpen) updateChatBadges(true);
+            });
+        }
+
+        // Arrancar listener de badge cuando el usuario inicia sesión
+        // (se llama desde doLogin() una vez autenticado)
+        const _origDoLogin = typeof doLogin !== 'undefined' ? null : null; // placeholder
+        // Hook: después del login exitoso se llama startChatBadgeListener()
+        // Esto se gestiona en el bloque de doLogin() de arriba vía showHome()
+        // Lo conectamos al evento DOMContentLoaded como fallback
+        document.addEventListener('DOMContentLoaded', () => {
+            // Si ya hay sesión activa (reload), arrancar badge listener
+            if (currentUser) startChatBadgeListener();
+        });
+
     </script>
+
+    <!-- Lightbox for viewing photos -->
+    <div id="chat-lightbox" class="chat-lightbox" onclick="closeLightbox()">
+        <span class="chat-lightbox-close" onclick="closeLightbox()">×</span>
+        <img id="chat-lightbox-img" src="" alt="Fullscreen image">
+    </div>
 </body>
 
 </html>
