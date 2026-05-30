@@ -3212,6 +3212,12 @@
             chatUnread = 0;
             updateChatBadges(false);
 
+            // Ocultar barra de navegación si no tiene cuenta
+            const chatNav = document.querySelector('#s-chat .nav');
+            if (chatNav) {
+                chatNav.style.display = currentUser ? 'flex' : 'none';
+            }
+
             // Mostrar banner push si aún no hay permiso
             const pushBanner = document.getElementById('chat-push-banner');
             if (Notification.permission === 'default') {
