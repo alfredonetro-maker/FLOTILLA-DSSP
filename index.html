@@ -798,6 +798,7 @@
             background: var(--bg);
             flex-direction: column;
             height: 100%;
+            overflow: hidden; /* evita que la pantalla entera haga scroll en móvil */
         }
 
         .chat-banner-push {
@@ -1755,6 +1756,12 @@
                         <button class="btn btn-primary" id="op-btn" onclick="saveOperatorKM()"
                             style="height:46px; border-radius:12px; background:linear-gradient(135deg,#d32f2f 0%,#b91c1c 100%); display:flex; align-items:center; justify-content:center; gap:8px; font-weight:600; font-size:15px; box-shadow:0 4px 12px rgba(211,47,47,0.2); border:none; color:#ffffff; cursor:pointer; width:100%; margin-top:2px;">
                             ⚙️ Registrar Kilometraje
+                        </button>
+
+                        <!-- Botón ir al Chat -->
+                        <button onclick="goToOperatorChat()"
+                            style="height:46px; border-radius:12px; background:linear-gradient(135deg,#0066ff 0%,#0052cc 100%); display:flex; align-items:center; justify-content:center; gap:8px; font-weight:600; font-size:15px; box-shadow:0 4px 12px rgba(0,102,255,0.2); border:none; color:#ffffff; cursor:pointer; width:100%; margin-top:2px;">
+                            💬 Ir al Chat de Flota
                         </button>
                     </div>
                 </div>
@@ -3461,6 +3468,20 @@
             document.getElementById("op-km-input").value = "";
         }
 
+        // Ir al chat como operador (usando nombre real del responsable del vehículo)
+        function goToOperatorChat() {
+            const unitId = document.getElementById("op-step-form").dataset.unitId;
+            if (!unitId) { showToast("Selecciona tu unidad primero"); return; }
+            const u = unidades.find(x => x.id === unitId);
+            if (u) {
+                // Guardar nombre del operador para usarlo en el chat
+                const opName = u.operador || u.responsable || ("Operador " + u.eco);
+                document.getElementById("op-step-form").dataset.operadorNombre = opName;
+                document.getElementById("op-step-form").dataset.operadorId = 'op_' + (u.eco || unitId);
+            }
+            showChat(true);
+        }
+
         async function saveOperatorKM() {
             const id = document.getElementById("op-step-form").dataset.unitId;
             if (!id) { showToast("Selecciona tu unidad"); return; }
@@ -3634,9 +3655,9 @@
                    </a>`
                 : '';
 
-            // Botón borrar (solo admins)
+            // Botón borrar (todos los usuarios con sesión pueden borrar)
             let deleteBtnHtml = '';
-            if (currentUser && ['Coordinador', 'Supervisor'].includes(currentUser.rol)) {
+            if (currentUser) {
                 const delIconColor = (isMe || isMyAnonMsg) ? 'rgba(255,255,255,0.8)' : '#ef4444';
                 const delBgColor = (isMe || isMyAnonMsg) ? 'rgba(255,255,255,0.2)' : 'rgba(239, 68, 68, 0.1)';
                 deleteBtnHtml = `<div onclick="deleteChatMessage('${doc.id}')" style="cursor:pointer; display:flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; background:${delBgColor}; margin-top:4px;" title="Borrar mensaje">
@@ -3738,10 +3759,22 @@
                 senderName = currentUser.nombre;
                 senderRole = currentUser.rol;
             } else {
-                const unitId = document.getElementById("op-step-form").dataset.unitId;
-                if (unitId && unidades && unidades.length > 0) {
-                    const u = unidades.find(x => x.id === unitId);
-                    if (u) senderName = "Operador " + u.eco;
+                // Operador anónimo: usar nombre guardado por goToOperatorChat o campo de la unidad
+                const form = document.getElementById("op-step-form");
+                const savedName = form.dataset.operadorNombre;
+                const savedId = form.dataset.operadorId;
+                if (savedName) {
+                    senderName = savedName;
+                    senderId = savedId || ('op_' + Date.now());
+                } else {
+                    const unitId = form.dataset.unitId;
+                    if (unitId && unidades && unidades.length > 0) {
+                        const u = unidades.find(x => x.id === unitId);
+                        if (u) {
+                            senderName = u.operador || u.responsable || ("Operador " + u.eco);
+                            senderId = 'op_' + (u.eco || unitId);
+                        }
+                    }
                 }
             }
 
