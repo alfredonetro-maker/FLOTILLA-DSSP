@@ -1127,6 +1127,267 @@
         .chat-lightbox-close:hover {
             background: rgba(255,255,255,0.2);
         }
+
+        /* ── Sidebar ── */
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15,23,42,0.5);
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+        .sidebar-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .sidebar-panel {
+            position: absolute;
+            top: 0;
+            left: -280px;
+            bottom: 0;
+            width: 280px;
+            background: #ffffff;
+            box-shadow: 4px 0 24px rgba(0,0,0,0.12);
+            display: flex;
+            flex-direction: column;
+            transition: left 0.3s cubic-bezier(0.4,0,0.2,1);
+            overflow: hidden;
+        }
+        .sidebar-overlay.open .sidebar-panel {
+            left: 0;
+        }
+        .sidebar-header {
+            padding: 52px 20px 20px;
+            background: linear-gradient(135deg, #0066ff 0%, #0047cc 100%);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .sidebar-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            font-family: var(--font);
+            flex-shrink: 0;
+        }
+        .sidebar-user-info h2 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+            font-family: var(--font);
+        }
+        .sidebar-user-info span {
+            font-size: 11px;
+            color: rgba(255,255,255,0.75);
+            font-family: var(--font);
+        }
+        .sidebar-nav {
+            flex: 1;
+            padding: 12px 0;
+            overflow-y: auto;
+        }
+        .sidebar-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 20px;
+            cursor: pointer;
+            font-family: var(--font);
+            font-size: 14px;
+            font-weight: 600;
+            color: #0f172a;
+            transition: background 0.15s;
+            border-radius: 0;
+        }
+        .sidebar-nav-item:hover, .sidebar-nav-item:active {
+            background: #f1f5f9;
+        }
+        .sidebar-nav-item svg {
+            width: 20px;
+            height: 20px;
+            stroke: #64748b;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+        .sidebar-nav-item.danger {
+            color: #ef4444;
+        }
+        .sidebar-nav-item.danger svg { stroke: #ef4444; }
+        .sidebar-divider {
+            height: 1px;
+            background: #e2e8f0;
+            margin: 6px 20px;
+        }
+
+        /* ── Notification Panel ── */
+        .notif-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1900;
+            pointer-events: none;
+        }
+        .notif-overlay.open {
+            pointer-events: all;
+        }
+        .notif-panel {
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 320px;
+            bottom: 0;
+            background: #ffffff;
+            box-shadow: -4px 0 24px rgba(0,0,0,0.10);
+            display: flex;
+            flex-direction: column;
+            transition: right 0.3s cubic-bezier(0.4,0,0.2,1);
+            overflow: hidden;
+        }
+        .notif-overlay.open .notif-panel {
+            right: 0;
+        }
+        .notif-panel-header {
+            padding: 52px 20px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .notif-panel-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f172a;
+            font-family: var(--font);
+        }
+        .notif-close-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+        }
+        .notif-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .notif-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: #fff8f8;
+            border: 1px solid #fecaca;
+            border-radius: 12px;
+            padding: 12px;
+        }
+        .notif-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(239,68,68,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .notif-text strong {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0f172a;
+            font-family: var(--font);
+            display: block;
+        }
+        .notif-text span {
+            font-size: 11px;
+            color: #64748b;
+            font-family: var(--font);
+        }
+
+        /* ── User Dropdown ── */
+        .user-dropdown-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1800;
+            pointer-events: none;
+        }
+        .user-dropdown-overlay.open {
+            pointer-events: all;
+        }
+        .user-dropdown-menu {
+            position: absolute;
+            top: 100px;
+            right: 12px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+            min-width: 200px;
+            overflow: hidden;
+            transform: translateY(-8px) scale(0.97);
+            opacity: 0;
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+            pointer-events: none;
+        }
+        .user-dropdown-overlay.open .user-dropdown-menu {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            pointer-events: all;
+        }
+        .user-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            cursor: pointer;
+            font-family: var(--font);
+            font-size: 14px;
+            font-weight: 600;
+            color: #0f172a;
+            transition: background 0.15s;
+        }
+        .user-dropdown-item:hover { background: #f8fafc; }
+        .user-dropdown-item svg { width:18px; height:18px; fill:none; stroke:#64748b; stroke-width:2; stroke-linecap:round; }
+        .user-dropdown-item.danger { color: #ef4444; }
+        .user-dropdown-item.danger svg { stroke: #ef4444; }
+        .user-dropdown-divider { height:1px; background:#e2e8f0; }
+        .user-dropdown-info {
+            padding: 14px 16px 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .user-dropdown-info strong {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0f172a;
+            font-family: var(--font);
+            display: block;
+        }
+        .user-dropdown-info span {
+            font-size: 11px;
+            color: #64748b;
+            font-family: var(--font);
+        }
     </style>
     <!-- Firebase SDKs (Compat v10) — Storage eliminado, usamos ImgBB gratis -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
@@ -1224,6 +1485,15 @@
                 <p style="font-size:12px; color:#64748b; text-align:center; line-height:1.4; margin-bottom:10px; font-family:var(--font); font-weight:500;">
                     Selecciona tu unidad para ingresar el kilometraje.
                 </p>
+
+                <!-- Boton Chat de Flota Anónimo -->
+                <div style="margin-bottom:14px;">
+                    <button class="btn" style="background:#0066ff; width:100%; display:flex; justify-content:center; align-items:center; gap:8px;" onclick="showChat(true)">
+                        <svg viewBox="0 0 24 24" style="width:18px; height:18px; fill:none; stroke:#fff; stroke-width:2;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        Abrir Chat de Flota
+                    </button>
+                </div>
+
                 <div id="op-unit-list" style="display:flex; flex-direction:column; gap:8px;"></div>
             </div>
 
@@ -1469,12 +1739,76 @@
             </div>
         </div>
 
+        <!-- Sidebar Overlay -->
+        <div id="sidebar-overlay" class="sidebar-overlay" onclick="closeSidebar(event)">
+            <div class="sidebar-panel" onclick="event.stopPropagation()">
+                <div class="sidebar-header">
+                    <div class="sidebar-avatar" id="sidebar-avatar">?</div>
+                    <div class="sidebar-user-info">
+                        <h2 id="sidebar-name">—</h2>
+                        <span id="sidebar-role">—</span>
+                    </div>
+                </div>
+                <div class="sidebar-nav">
+                    <div class="sidebar-nav-item" onclick="closeSidebar(); showHome();">
+                        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        Inicio
+                    </div>
+                    <div class="sidebar-nav-item" onclick="closeSidebar(); showChat();">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        Chat de Flota
+                    </div>
+                    <div class="sidebar-nav-item" onclick="closeSidebar(); showReports();">
+                        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                        Reportes
+                    </div>
+                    <div class="sidebar-divider"></div>
+                    <div class="sidebar-nav-item danger" onclick="closeSidebar(); logout();">
+                        <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                        Cerrar sesión
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification Panel -->
+        <div id="notif-overlay" class="notif-overlay" onclick="closeNotifPanel(event)">
+            <div class="notif-panel" onclick="event.stopPropagation()">
+                <div class="notif-panel-header">
+                    <span class="notif-panel-title">🔔 Notificaciones</span>
+                    <div class="notif-close-btn" onclick="closeNotifPanel()">✕</div>
+                </div>
+                <div class="notif-list" id="notif-list">
+                    <div style="text-align:center; padding:40px 20px; color:#64748b; font-size:13px; font-family:var(--font);">Sin alertas pendientes 🎉</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Dropdown -->
+        <div id="user-dropdown-overlay" class="user-dropdown-overlay" onclick="closeUserDropdown()">
+            <div class="user-dropdown-menu" onclick="event.stopPropagation()">
+                <div class="user-dropdown-info">
+                    <strong id="dropdown-name">—</strong>
+                    <span id="dropdown-role">—</span>
+                </div>
+                <div class="user-dropdown-item" onclick="closeUserDropdown(); showHome();">
+                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Ir al Inicio
+                </div>
+                <div class="user-dropdown-divider"></div>
+                <div class="user-dropdown-item danger" onclick="closeUserDropdown(); logout();">
+                    <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                    Cerrar sesión
+                </div>
+            </div>
+        </div>
+
         <!-- REPORTS -->
         <div id="s-reports" class="screen" style="background:#f8fafc;">
             <div class="topbar" style="background:#ffffff; border-bottom:1px solid #e2e8f0; padding: 48px 16px 14px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
                 <div style="display:flex; align-items:center; gap:10px;">
                     <!-- Menu Icon -->
-                    <div style="cursor:pointer; display:flex; align-items:center; padding: 4px;">
+                    <div onclick="openSidebar()" style="cursor:pointer; display:flex; align-items:center; padding: 4px; width:32px; height:32px; justify-content:center; border-radius:8px; transition:background 0.15s;" onmousedown="this.style.background='#f1f5f9'" onmouseup="this.style.background='transparent'">
                         <svg viewBox="0 0 24 24" style="width:20px; height:20px; stroke:#475569; fill:none; stroke-width:2.5; stroke-linecap:round;"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
                     </div>
                     
@@ -1490,15 +1824,14 @@
                 </div>
                 
                 <div style="display:flex; align-items:center; gap:8px;">
-                    <!-- Bell icon with blue badge -->
-                    <div style="position:relative; cursor:pointer; width:34px; height:34px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center;">
+                    <!-- Bell icon with badge -->
+                    <div onclick="openNotifPanel()" style="position:relative; cursor:pointer; width:34px; height:34px; border-radius:50%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; transition:background 0.15s;" onmousedown="this.style.background='#e2e8f0'" onmouseup="this.style.background='#f1f5f9'">
                         <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:#475569; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-                        <!-- Badge number -->
                         <span id="rep-bell-badge" style="position:absolute; top:-2px; right:-2px; background:#0066ff; color:#ffffff; font-size:9px; font-weight:700; width:15px; height:15px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #ffffff;">0</span>
                     </div>
                     
                     <!-- User dropdown pill -->
-                    <div style="display:flex; align-items:center; gap:6px; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:20px; padding:4px 10px; cursor:pointer;">
+                    <div onclick="openUserDropdown()" style="display:flex; align-items:center; gap:6px; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:20px; padding:4px 10px; cursor:pointer; transition:background 0.15s;" onmousedown="this.style.background='#e2e8f0'" onmouseup="this.style.background='#f1f5f9'">
                         <svg viewBox="0 0 24 24" style="width:14px; height:14px; fill:none; stroke:#64748b; stroke-width:2.5;"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                         <span id="role-label2" style="font-size:11px; font-weight:600; color:#334155; max-width:80px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-family:var(--font);">—</span>
                         <svg viewBox="0 0 24 24" style="width:10px; height:10px; fill:none; stroke:#64748b; stroke-width:3; stroke-linecap:round;"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1633,6 +1966,11 @@
         <div id="s-chat" class="screen">
             <div class="topbar" style="background:#ffffff; border-bottom:1px solid #e2e8f0; padding: 48px 16px 14px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
                 <div style="display:flex; align-items:center; gap:10px;">
+                    <!-- Botón Atrás -->
+                    <div onclick="closeChat()" style="cursor:pointer; display:flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:8px; border:1px solid #e2e8f0; background:#f8fafc; margin-right:4px;">
+                        <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:#475569; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                    </div>
+
                     <div style="width:36px; height:36px; border-radius:8px; background:#0066ff; display:flex; align-items:center; justify-content:center;">
                         <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:#ffffff; fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;">
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -1847,6 +2185,8 @@
 
                 if (res.ok) {
                     currentUser = { ...res, _clave: clave };
+                    localStorage.setItem('flotillaUser', JSON.stringify(currentUser)); // Persistir sesión
+
                     document.getElementById("role-label").textContent = res.rol;
                     document.getElementById("role-label2").textContent = res.rol;
                     document.getElementById("btn-demanda-wrap").style.display =
@@ -1869,14 +2209,88 @@
 
         function logout() {
             currentUser = null; unidades = []; currentUnit = null;
+            localStorage.removeItem('flotillaUser'); // Borrar sesión persistida
             document.getElementById("l-user").value = "";
             document.getElementById("l-pass").value = "";
             document.getElementById("l-err").textContent = "";
             show("s-login");
         }
 
+        // ── Sidebar ───────────────────────────────────────────────
+        function openSidebar() {
+            if (currentUser) {
+                const name = currentUser.nombre || currentUser.usuario;
+                document.getElementById('sidebar-name').textContent = name;
+                document.getElementById('sidebar-role').textContent = currentUser.rol;
+                document.getElementById('sidebar-avatar').textContent = name.slice(0,1).toUpperCase();
+            }
+            document.getElementById('sidebar-overlay').classList.add('open');
+        }
+        function closeSidebar(e) {
+            if (!e || e.target === document.getElementById('sidebar-overlay')) {
+                document.getElementById('sidebar-overlay').classList.remove('open');
+            }
+        }
+
+        // ── Panel de Notificaciones ───────────────────────────────
+        function openNotifPanel() {
+            const list = document.getElementById('notif-list');
+            const urgentes = (unidades || []).filter(u => u.alerta === 'URGENTE');
+            const proximos = (unidades || []).filter(u => u.alerta === 'PROXIMO');
+            if (urgentes.length === 0 && proximos.length === 0) {
+                list.innerHTML = `<div style="text-align:center; padding:40px 20px; color:#64748b; font-size:13px; font-family:var(--font);">Sin alertas pendientes 🎉</div>`;
+            } else {
+                list.innerHTML = [
+                    ...urgentes.map(u => `
+                        <div class="notif-item">
+                            <div class="notif-icon">
+                                <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#ef4444;fill:none;stroke-width:2.5;stroke-linecap:round;"><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            </div>
+                            <div class="notif-text">
+                                <strong>🔴 ${u.eco} — ${u.modelo || ''}</strong>
+                                <span>Mantenimiento URGENTE • ${u.restantes < 0 ? Math.abs(u.restantes).toLocaleString() + ' km sobrepasados' : u.restantes.toLocaleString() + ' km restantes'}</span>
+                            </div>
+                        </div>`),
+                    ...proximos.map(u => `
+                        <div class="notif-item" style="background:#fffbeb; border-color:#fde68a;">
+                            <div class="notif-icon" style="background:rgba(245,158,11,0.1);">
+                                <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#f59e0b;fill:none;stroke-width:2;stroke-linecap:round;"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            </div>
+                            <div class="notif-text">
+                                <strong>🟡 ${u.eco} — ${u.modelo || ''}</strong>
+                                <span>Próximo mantenimiento • ${u.restantes.toLocaleString()} km restantes</span>
+                            </div>
+                        </div>`)
+                ].join('');
+            }
+            document.getElementById('notif-overlay').classList.add('open');
+        }
+        function closeNotifPanel(e) {
+            if (!e || e.target === document.getElementById('notif-overlay')) {
+                document.getElementById('notif-overlay').classList.remove('open');
+            }
+        }
+
+        // ── User Dropdown ─────────────────────────────────────────
+        function openUserDropdown() {
+            if (currentUser) {
+                document.getElementById('dropdown-name').textContent = currentUser.nombre || currentUser.usuario;
+                document.getElementById('dropdown-role').textContent = currentUser.rol;
+            }
+            document.getElementById('user-dropdown-overlay').classList.add('open');
+        }
+        function closeUserDropdown() {
+            document.getElementById('user-dropdown-overlay').classList.remove('open');
+        }
+
+        // ── Show Reports ──────────────────────────────────────────
+        function showReports() {
+            show('s-reports');
+        }
+
         // ── Home ──────────────────────────────────────────────────
         async function showHome() {
+
             show("s-home");
             loading(true);
             try {
@@ -2614,10 +3028,6 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js').then(() => console.log('PWA: Ready'));
-                // Also register the Firebase messaging service worker
-                navigator.serviceWorker.register('firebase-messaging-sw.js')
-                    .then(reg => console.log('FCM SW: Ready', reg))
-                    .catch(err => console.warn('FCM SW registration failed:', err));
             });
             let refreshing = false;
             navigator.serviceWorker.addEventListener('controllerchange', () => {
@@ -2646,7 +3056,7 @@
         // ── ImgBB — API gratuita para subir fotos ─────────────────────────────
         // Obtén tu API key gratis en https://imgbb.com/
         // Regístrate, ve a "About" > "API" > "Get API key"
-        const IMGBB_API_KEY = 'TU_API_KEY_AQUI'; // ⚠️ Reemplaza con tu clave de ImgBB
+        const IMGBB_API_KEY = '618111eea278dce1d160360c7d295a83'; // ⚠️ Clave de ImgBB configurada
 
         // ── Variables de Chat ─────────────────────────────────────────
         let chatUnsubscribe   = null;   // función para desuscribir listener de Firestore
@@ -2676,8 +3086,12 @@
         // ── Renderizar un mensaje ─────────────────────────────────────
         function renderChatMsg(doc) {
             const data = doc.data();
-            const isMe = currentUser && data.usuario === currentUser.usuario;
-            const cls  = isMe ? 'mine' : 'others';
+            const isMe = currentUser ? data.usuario === currentUser.usuario : (data.rol === 'Operador' && doc.id.length > 5);
+            // Fallback for anonymous users looking at their own messages could be complex, 
+            // but for operators we'll treat all operators as somewhat similar, 
+            // though it's better to just color them based on role.
+            const isMyAnonMsg = !currentUser && data.rol === 'Operador';
+            const cls  = (isMe || isMyAnonMsg) ? 'mine' : 'others';
             const color = rolColor(data.rol);
             const time  = formatChatTime(data.timestamp);
             const imgHtml = data.fotoUrl
@@ -2686,24 +3100,51 @@
             const textHtml = data.texto
                 ? `<span>${data.texto.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</span>`
                 : '';
+                
+            let deleteBtnHtml = '';
+            if (currentUser && ['Coordinador', 'Supervisor'].includes(currentUser.rol)) {
+                deleteBtnHtml = `<div onclick="deleteChatMessage('${doc.id}')" style="cursor:pointer; display:flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; background:rgba(239, 68, 68, 0.1); margin-top:4px;" title="Borrar mensaje">
+                    <svg viewBox="0 0 24 24" style="width:12px; height:12px; stroke:#ef4444; fill:none; stroke-width:2; stroke-linecap:round;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                </div>`;
+            }
+
             return `
                 <div class="chat-msg-wrap ${cls}" data-id="${doc.id}">
-                    <div class="chat-avatar" style="background:${color};">${initials(data.nombre)}</div>
+                    ${!(isMe || isMyAnonMsg) ? `<div class="chat-avatar" style="background:${color};">${initials(data.nombre)}</div>` : ''}
                     <div class="chat-bubble">
                         <div class="chat-meta">
-                            <strong>${isMe ? 'Tú' : data.nombre}</strong>
+                            <strong>${(isMe || isMyAnonMsg) ? 'Tú' : data.nombre}</strong>
                             <span class="chat-role-pill">${data.rol || ''}</span>
                         </div>
                         ${imgHtml}
                         ${textHtml}
-                        <span class="chat-time">${time}</span>
+                        <div style="display:flex; justify-content:flex-end; align-items:center; gap:8px;">
+                            ${deleteBtnHtml}
+                            <span class="chat-time">${time}</span>
+                        </div>
                     </div>
                 </div>`;
         }
 
+        async function deleteChatMessage(docId) {
+            if (confirm("¿Estás seguro de borrar este mensaje para todos?")) {
+                try { await db.collection('chats').doc(docId).delete(); } 
+                catch(e) { console.error(e); showToast("Error al borrar"); }
+            }
+        }
+
+        // ── Atrás del chat ────────────────────────────────────────────
+        function closeChat() {
+            if (currentUser) {
+                show('s-home'); // si está logueado, regresa al inicio
+            } else {
+                show('s-operator'); // si es anónimo, regresa a selección de unidad
+            }
+        }
+
         // ── Mostrar pantalla de Chat ──────────────────────────────────
-        async function showChat() {
-            if (!currentUser) { showToast('Inicia sesión primero'); return; }
+        async function showChat(isAnonymous = false) {
+            if (!currentUser && !isAnonymous) { showToast('Inicia sesión primero'); return; }
             show('s-chat');
             chatUnread = 0;
             updateChatBadges(false);
@@ -2739,12 +3180,30 @@
 
         // ── Enviar mensaje ────────────────────────────────────────────
         async function sendChatMessage() {
-            if (!currentUser) return;
             const input   = document.getElementById('chat-message-input');
             const texto   = input.value.trim();
             const hasText = texto.length > 0;
             const hasImg  = attachedPhotoFile !== null;
             if (!hasText && !hasImg) return;
+
+            let senderId = "anon_" + Date.now();
+            let senderName = "Operador";
+            let senderRole = "Operador";
+
+            if (currentUser) {
+                senderId = currentUser.usuario;
+                senderName = currentUser.nombre;
+                senderRole = currentUser.rol;
+            } else {
+                // Obtener unidad seleccionada si existe
+                const unitId = document.getElementById("op-step-form").dataset.unitId;
+                if (unitId && unidades && unidades.length > 0) {
+                    const u = unidades.find(x => x.id === unitId);
+                    if (u) {
+                        senderName = "Operador " + u.eco;
+                    }
+                }
+            }
 
             const sendBtn = document.querySelector('.chat-send-btn');
             sendBtn.disabled = true;
@@ -2759,14 +3218,14 @@
                 await db.collection('chats').add({
                     texto:     texto,
                     fotoUrl:   fotoUrl,
-                    usuario:   currentUser.usuario,
-                    nombre:    currentUser.nombre,
-                    rol:       currentUser.rol,
+                    usuario:   senderId,
+                    nombre:    senderName,
+                    rol:       senderRole,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 });
             } catch(e) {
                 console.error('Error enviando mensaje:', e);
-                showToast('Error al enviar el mensaje');
+                showToast('Error: ' + (e.message || 'Error al enviar'));
             } finally {
                 sendBtn.disabled = false;
                 input.focus();
@@ -2958,11 +3417,25 @@
         // (se llama desde doLogin() una vez autenticado)
         const _origDoLogin = typeof doLogin !== 'undefined' ? null : null; // placeholder
         // Hook: después del login exitoso se llama startChatBadgeListener()
-        // Esto se gestiona en el bloque de doLogin() de arriba vía showHome()
-        // Lo conectamos al evento DOMContentLoaded como fallback
         document.addEventListener('DOMContentLoaded', () => {
-            // Si ya hay sesión activa (reload), arrancar badge listener
-            if (currentUser) startChatBadgeListener();
+            // Restaurar sesión persistida
+            const savedUser = localStorage.getItem('flotillaUser');
+            if (savedUser) {
+                try {
+                    currentUser = JSON.parse(savedUser);
+                    document.getElementById("role-label").textContent = currentUser.rol;
+                    document.getElementById("role-label2").textContent = currentUser.rol;
+                    document.getElementById("btn-demanda-wrap").style.display =
+                        ROLES_REPORTE.includes(currentUser.rol) ? "flex" : "none";
+                    document.getElementById("coord-settings").style.display =
+                        currentUser.rol === "Coordinador" ? "flex" : "none";
+                    showHome();
+                    startChatBadgeListener();
+                } catch(e) {
+                    console.warn("Error restaurando sesión:", e);
+                    localStorage.removeItem('flotillaUser');
+                }
+            }
         });
 
     </script>
